@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url("../fonts/hk-grotesk/HKGrotesk-Light.woff2") format("woff2"), url("../fonts/hk-grotesk/HKGrotesk-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url("../fonts/hk-grotesk/HKGrotesk-Bold.woff2") format("woff2"), url("../fonts//hk-grotesk/HKGrotesk-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url("../fonts/hk-grotesk/HKGrotesk-Regular.woff2") format("woff2"), url("../fonts//hk-grotesk/HKGrotesk-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'HK Grotesk';
+    src: url("../fonts/hk-grotesk/HKGrotesk-Medium.woff2") format("woff2"), url("../fonts//hk-grotesk/HKGrotesk-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal
+}
+
+body{
+    font-family: 'HK Grotesk', 'san-serif',serif !important;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    font-family: 'HK Grotesk', 'san-serif',serif !important;
+}
+.table td, .table th{
+    font-family: 'HK Grotesk', 'san-serif',serif !important;
+}
+
+.box-centered {
+    margin: 0 auto;
+}
+.no-camp {
+    text-align: center;
+    margin: 15% auto;
+}
+.ims{
+	background: #1a233a;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #373e52;
+}
+.alert.alert-success,.alert.alert.alert-danger{
+    box-shadow: none !important;
+}
+.field-icon {
+    position: absolute;
+    left: 92%;
+    font-size: 20px!important;
+    border-right: none;
+    top: 33px;
+    color: #8a8a8a;
+}
+.pic-view{
+    width: 200px;
+    height: 100%;
+    border-left:1px solid #464D5C;
+    padding:20px;
+}
+.modal-dialog{
+    max-width: 50%;
+}
+.car-pic-view{
+    border-radius: 10px;
+    padding: 20px;
+}
+.carousel-inner {
+    width: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+@media (max-width:992px){
+    .modal-dialog{
+        max-width: 100%;
+    }
+    .pic-view{
+        border-left:none;
+        border-top:1px solid #464D5C;
+        margin-top: 20px;
+    }
+    .modal-title{
+        font-size: 1rem !important;
+    }
+    .carousel-inner {
+        width: 100%;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+}
+.dropzone .dz-preview.dz-image-preview{
+    background: transparent;
+}

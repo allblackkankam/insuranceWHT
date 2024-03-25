@@ -1,0 +1,41 @@
+#Dont touch
+
+# Indexing index.php
+
+	DirectoryIndex index.php index.html
+
+#remove php file extension-e.g. https://example.com/file.php will become https://example.com/file
+	RewriteEngine on 
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME}\.php -f
+	RewriteRule ^(.*)$ $1.php [NC,L]
+	
+#session lifetime and path
+	
+	php_value session.gc_maxlifetime "86400"
+	php_value session.gc_probability "1"
+	
+#session highjacking prevention
+
+	#php_value session.cookie_httponly 1
+	#php_value session.cookie_secure 1
+
+#remove html file extension-e.g. https://example.com/file.html will become https://example.com/file
+	RewriteEngine on 
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME}\.html -f
+	RewriteRule ^(.*)$ $1.html [NC,L]
+
+# Error pages 
+
+	ErrorDocument 400 /error-files/400.php
+	ErrorDocument 401 /error-files/401.php
+	ErrorDocument 403 /error-files/403.php
+	ErrorDocument 404 /error-files/404.php
+	ErrorDocument 500 /error-files/500.php
+
+# Disable directory browsing
+        
+    Options +ExecCGI +Includes +IncludesNOEXEC +SymLinksIfOwnerMatch -Indexes
+	
+RewriteRule ^/url /url?
