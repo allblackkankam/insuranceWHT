@@ -6,7 +6,7 @@ html {
 
 html body {
     height: 100%;
-    background-color: #ddd;
+    background-color: rgb(27, 66, 224);
     direction: ltr;
     font-family: 'HK Grotesk', 'san-serif',serif !important;
 }
@@ -185,7 +185,7 @@ html body.blank-page .content-wrapper .flexbox-container {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -361,7 +361,8 @@ body.footer-hidden footer {
 }
 
 footer.footer {
-    padding: 1rem 2.2rem
+    padding: 8px
+    
 }
 
 footer.footer a {

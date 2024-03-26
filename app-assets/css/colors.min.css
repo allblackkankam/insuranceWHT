@@ -1493,7 +1493,7 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 
 .badge-circle-light-primary {
     background-color: #E2ECFF;
-    color: #5A8DEE
+    color: #5A8DEE;
 }
 
 .overlay-primary {
@@ -1509,8 +1509,8 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 
 .btn-primary.hover,
 .btn-primary:hover {
-    background-color: #719DF0 !important;
-    color: #FFF
+    background-color: #FFF !important;
+    color: #719DF0;
 }
 
 .btn-primary.hover.glow,

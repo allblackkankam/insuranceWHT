@@ -30,7 +30,7 @@
                                 <form action="" enctype="multipart/form-data" id="form_user">
                                     <div id="msg"></div>
                                     <div class="form-group mb-50">
-                                        <label>Comapany Name <span class="text-danger" id="u_comErr"></span></label>
+                                        <label>Company Name <span class="text-danger" id="u_comErr"></span></label>
                                         <input type="text" class="form-control" name="u_com" id="u_com">
                                     </div>
                                     <div class="form-row">
@@ -52,7 +52,7 @@
                                             <label>Password<span class="text-danger" id="u_passErr"></span></label>
                                             <input type="password" class="form-control visi" name="u_pass" id="u_upass">
                                             <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 88%;"></span>
-                                            <small class="text-primary">Password should have letters , numbers and at least 6 characters long.</small>
+                                            <small class="text-primary">Password should have letters, numbers and at least 6 characters long.</small>
                                         </div>
                                         <div class="form-group col-md-6 mb-50">
                                             <fieldset class="form-group">
@@ -76,7 +76,7 @@
                                             <input type="text" class="form-control" name="u_num" >
                                         </fieldset>
                                     </div>
-                                    <button type="submit" class="btn btn-primary glow position-relative w-100" id="create_user">SIGN UP<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
+                                    <button type="submit" class="btn btn-primary glow position-relative w-100" id="create_user">Sign Up<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
                                 </form>
                                     <hr>
                                     <div class="text-center"><small class="mr-25">Already have an account?</small><a href="/"><small>Sign in</small> </a></div>
@@ -96,7 +96,7 @@
         <!-- BEGIN: Footer-->
         <style>
             .ifoot{
-                position: absolute;
+                position: 0;
                 bottom: 0;
                 width: 100%;
             }
