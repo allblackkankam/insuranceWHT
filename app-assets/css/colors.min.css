@@ -1126,18 +1126,18 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary.btn-lighten-5 {
-    border-color: #2C6DE9 !important
+    border-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-5:hover {
-    border-color: #2C6DE9 !important;
-    background-color: #175EE4 !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-5:active,
 .btn-primary.btn-lighten-5:focus {
-    border-color: #175EE4 !important;
-    background-color: #1554CD !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-outline-primary.btn-outline-lighten-5 {
@@ -1184,18 +1184,18 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary.btn-lighten-4 {
-    border-color: #2C6DE9 !important
+    border-color: rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-4:hover {
-    border-color: #2C6DE9 !important;
-    background-color: #175EE4 !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color: rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-4:active,
 .btn-primary.btn-lighten-4:focus {
-    border-color: #175EE4 !important;
-    background-color: #1554CD !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-outline-primary.btn-outline-lighten-4 {
@@ -1242,18 +1242,18 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary.btn-lighten-3 {
-    border-color: #2C6DE9 !important
+    border-color: rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-3:hover {
-    border-color: #2C6DE9 !important;
-    background-color: #175EE4 !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-3:active,
 .btn-primary.btn-lighten-3:focus {
-    border-color: #175EE4 !important;
-    background-color: #1554CD !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-outline-primary.btn-outline-lighten-3 {
@@ -1300,18 +1300,18 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary.btn-lighten-2 {
-    border-color: #2C6DE9 !important
+    border-color: rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-2:hover {
-    border-color: #2C6DE9 !important;
-    background-color: #175EE4 !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-2:active,
 .btn-primary.btn-lighten-2:focus {
-    border-color: #175EE4 !important;
-    background-color: #1554CD !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-outline-primary.btn-outline-lighten-2 {
@@ -1358,18 +1358,18 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary.btn-lighten-1 {
-    border-color: #2C6DE9 !important
+    border-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-1:hover {
-    border-color: #2C6DE9 !important;
-    background-color: #175EE4 !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-primary.btn-lighten-1:active,
 .btn-primary.btn-lighten-1:focus {
-    border-color: #175EE4 !important;
-    background-color: #1554CD !important
+    border-color:  rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important
 }
 
 .btn-outline-primary.btn-outline-lighten-1 {
@@ -1502,15 +1502,15 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary {
-    border-color: #2C6DE9 !important;
-    background-color: #5A8DEE !important;
+    border-color: rgb(34, 40, 66) !important;
+    background-color:  rgb(34, 40, 66) !important;
     color: #FFF
 }
 
 .btn-primary.hover,
 .btn-primary:hover {
     background-color: #FFF !important;
-    color: #719DF0;
+    color:  rgb(34, 40, 66);
 }
 
 .btn-primary.hover.glow,
@@ -1521,7 +1521,7 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 .btn-primary.active,
 .btn-primary:active,
 .btn-primary:focus {
-    background-color: #437DEC !important;
+    background-color:  rgb(34, 40, 66) !important;
     color: #FFF !important
 }
 

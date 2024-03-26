@@ -122,13 +122,13 @@
                             <div class="row">
                               <div class="col-md-6">
                                   <fieldset class="form-group">
-                                      <label>Comapany Name <span class="text-danger" id="u_comErr"></span></label>
+                                      <label>Company Name <span class="text-danger" id="u_comErr"></span></label>
                                       <input type="text" class="form-control" name="u_com" >
                                   </fieldset>
                               </div>
                               <div class="col-md-6">
                                 <fieldset class="form-group">
-                                    <label >Comapany Number<span class="text-danger" id="u_numErr"></span></label>
+                                    <label >Company Number<span class="text-danger" id="u_numErr"></span></label>
                                     <input type="text" class="form-control" name="u_num" >
                                 </fieldset>
                               </div>
@@ -151,7 +151,7 @@
                               </div>
                             </div>
                             <div class="col-md-12">
-                                <label>Comapany Logo <span class="" id="u_picErr"></span></label>
+                                <label>Company Logo <span class="" id="u_picErr"></span></label>
                                 <div  class="ims row" style="margin-bottom: 20px;">
                                     <div class="dz-message col-md-6" style="margin-top: 30px;"> 
                                         <h6>Click to upload image size 500KB</h6>

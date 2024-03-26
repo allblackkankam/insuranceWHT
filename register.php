@@ -51,9 +51,9 @@
                                         <div class="form-group col-md-6 mb-50">
                                             <label>Password<span class="text-danger" id="u_passErr"></span></label>
                                             <input type="password" class="form-control visi" name="u_pass" id="u_upass">
-                                            <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 88%;"></span>
-                                            <small class="text-primary">Password should have letters, numbers and at least 6 characters long.</small>
+                                            <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 85%;"></span>  
                                         </div>
+                                        <small class="text-primary">Password should have letters, numbers and at least 6 characters long.</small>
                                         <div class="form-group col-md-6 mb-50">
                                             <fieldset class="form-group">
                                                 <label >Retype-Password<span class="text-danger" id="re_upassErr"></span></label>

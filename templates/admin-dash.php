@@ -6,19 +6,19 @@
 
     $query = "SELECT * FROM aff";
     $result = mysqli_query($conn,$query);
-    $aff_count=mysqli_num_rows($result);
+   /* $aff_count=mysqli_num_rows($result);*/
 
     $query = "SELECT * FROM alert";
     $result = mysqli_query($conn,$query);
-    $alert_count=mysqli_num_rows($result);
+   /* $alert_count=mysqli_num_rows($result);*/
 
     $query = "SELECT * FROM addcar";
     $result = mysqli_query($conn,$query);
-    $addcar_count=mysqli_num_rows($result);
+   /* $addcar_count=mysqli_num_rows($result);*/
 
     $query = "SELECT * FROM carreg";
     $result = mysqli_query($conn,$query);
-    $carreg_count=mysqli_num_rows($result);
+   /* $carreg_count=mysqli_num_rows($result);*/
 
 ?>
 
