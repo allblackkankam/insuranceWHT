@@ -11,7 +11,7 @@
     <meta name="description" content="Bulk sms sending platform">
     <meta name="keywords" content="bulk sms,sms,platform,text,phone,mobile text">
     <meta name="author" content="Allblackkankam">
-    <title>Insurance WHT</title>
+    <title>ZIBA ESTR GHANA</title>
     <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/favicon.png">
 
     <!-- BEGIN: Vendor CSS-->
