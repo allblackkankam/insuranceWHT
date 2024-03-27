@@ -11,10 +11,9 @@
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-body"><!-- forgot password start -->
-          <section id="auth-login" class="row flexbox-container">
-            <div class="col-xl-4 m-1">
-                <div class="card mb-0">
-                    <div class="px-0">
+            <section id="auth-login" class="row flexbox-container">
+                <div class="col-xl-4 col-md-6 col-12 m-5">
+                    <div class="card ">
                         <div class="card disable-rounded-right mb-0 p-2 h-100 d-flex justify-content-center">
                             <div class="">
                                 <div class="card-title">
@@ -26,8 +25,7 @@
                                 <p class="text-primary"> Lets get started</p>
                             </div>
                             <div class="card-content">
-                                <div class="">
-                                <form action="" enctype="multipart/form-data" id="form_user">
+                                <form id="form_user">
                                     <div id="msg"></div>
                                     <div class="form-group mb-50">
                                         <label>Company Name <span class="text-danger" id="u_comErr"></span></label>
@@ -48,13 +46,14 @@
                                         <input type="text" class="form-control" name="u_name"  id="u_name">
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6 mb-50">
+                                        <div class="form-group col-md-12 mb-50">
                                             <label>Password<span class="text-danger" id="u_passErr"></span></label>
                                             <input type="password" class="form-control visi" name="u_pass" id="u_upass">
-                                            <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 85%;"></span>  
+                                            <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 92%;"></span>  
+                                            <small class="text-primary">Password should have letters, numbers and at least 6 characters long.</small>
                                         </div>
-                                        <small class="text-primary">Password should have letters, numbers and at least 6 characters long.</small>
-                                        <div class="form-group col-md-6 mb-50">
+                                        
+                                        <div class="form-group col-md-12 mb-50">
                                             <fieldset class="form-group">
                                                 <label >Retype-Password<span class="text-danger" id="re_upassErr"></span></label>
                                                 <input type="password" class="form-control visi" name="re_upass" is="re_upass">
@@ -69,7 +68,7 @@
                                     </div>
                                     
                                     
-                                   
+                                
                                     <div class="form-group mb-50">
                                         <fieldset class="form-group">
                                             <label >Phone Number<span class="text-danger" id="u_numErr"></span></label>
@@ -78,31 +77,13 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary glow position-relative w-100" id="create_user">Sign Up<i id="icon-arrow" class="bx bx-right-arrow-alt"></i></button>
                                 </form>
-                                    <hr>
-                                    <div class="text-center"><small class="mr-25">Already have an account?</small><a href="/"><small>Sign in</small> </a></div>
-                                </div>
+                                <hr>
+                                <div class="text-center"><small class="mr-25">Already have an account?</small><a href="/"><small>Sign in</small> </a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white ifoot">
-            <footer class="footer">
-                <p class="clearfix mb-0 text-center" id="copyright">&copy; 
-                <script> document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>  
-            </footer>
-        </div>
-        </section>
-        <!-- BEGIN: Footer-->
-        <style>
-            .ifoot{
-                position: 0;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-            
-            <!-- END: Footer-->
+            </section>
         </div>
       </div>
     </div>

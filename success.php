@@ -12,43 +12,26 @@
     <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-body"><!-- forgot password start -->
-          <section id="auth-login" class="row flexbox-container">
-            <div class="col-xl-4 m-1">
-                <div class="card mb-0">
-                    <div class="px-0">
-                        <div class="card disable-rounded-right mb-0 h-100 d-flex justify-content-center">
-                            <div class="card-content">
-                                <div class="pt-0 p-2 text-center">
-                                    <h4 class="text-center m-2">Welcome</h4>
-                                    <p style="font-size:18px">You have successfully signup. You have to verify your account by following the link sent to you by email.<br/> 
-    
-                                    <div style="margin:20px auto">
-                                        <button id="resend" class="btn btn-primary"  >Can't find email Resend?</button>
+            <section id="auth-login" class="flexbox-container">
+                <div class="col-xl-4 col-md-6 com-12 m-1">
+                    <div class="card mb-0">
+                        <div class="px-0">
+                            <div class="card disable-rounded-right mb-0 h-100 d-flex justify-content-center">
+                                <div class="card-content">
+                                    <div class="pt-0 p-2 text-center">
+                                        <h4 class="text-center m-2">Welcome</h4>
+                                        <p style="font-size:18px">You have successfully signup. You have to verify your account by following the link sent to you by email.<br/> 
+        
+                                        <div style="margin:20px auto">
+                                            <button id="resend" class="btn btn-primary"  >Can't find email Resend?</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="bg-white ifoot">
-            <footer class="footer">
-                <p class="clearfix mb-0 text-center" id="copyright">&copy; 
-                    <script> document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script>  
-                    
-            </footer>
-        </div>
-        </section>
-        <!-- BEGIN: Footer-->
-        <style>
-            .ifoot{
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            }
-        </style>
-            
-            <!-- END: Footer-->
+            </section>
         </div>
       </div>
     </div>
