@@ -1281,7 +1281,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .header-navbar .navbar-container ul.nav li>a.nav-link {
-    color: #727E8C
+    color: rgb(34, 40, 66);
+    font-weight: bold;
 }
 
 .header-navbar .navbar-container ul.nav li>a.nav-link i.flag-icon {
@@ -1359,10 +1360,11 @@ input[type=number]::-webkit-outer-spin-button {
 
 .header-navbar .navbar-container ul.nav li i.ficon {
     font-size: 1.5rem;
-    color: #475F7B;
+    color: rgb(34, 40, 66);
     vertical-align: middle;
     cursor: pointer;
-    -webkit-text-stroke: .2px #FFF
+    -webkit-text-stroke: .2px #FFF;
+    font-weight: bold
 }
 
 .header-navbar .navbar-container ul.nav li i.ficon:hover {

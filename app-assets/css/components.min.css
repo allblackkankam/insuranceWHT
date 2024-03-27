@@ -8,7 +8,7 @@ html body {
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: rgb(34, 40, 66);
+    background-color: cornsilk;
     direction: ltr;
     font-family: 'HK Grotesk', 'san-serif',serif !important;
 }
@@ -554,17 +554,17 @@ body.fixed-footer footer.footer-light {
 }
 
 .main-menu.menu-dark {
-    color:  rgb(34, 40, 66);
-    background: white;
+    color:  rgb(238, 239, 243);
+    background: rgb(34, 40, 66);
     border: #464D5C
 }
 
 .main-menu.menu-dark .navigation {
-    background: white
+    background: rgb(34, 40, 66);
 }
 
 .main-menu.menu-dark .navigation .navigation-header {
-    color:  rgb(34, 40, 66);
+    color:  rgb(242, 243, 247);
     margin: calc(2.2rem - .5rem) 0 .5rem 1.8rem;
     padding: 0;
     letter-spacing: 1px
@@ -594,8 +594,9 @@ body.fixed-footer footer.footer-light {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    color:  rgb(34, 40, 66);
-    padding: 10px 12px
+    color:  rgb(242, 243, 248);
+    padding: 10px 12px;
+    font-weight: bold;
 }
 
 .main-menu.menu-dark .navigation>li ul .has-sub:not(.open)>ul,
