@@ -1,7 +1,7 @@
 
 <?php //Load cars
 
-require('../templates/db.php') ;
+require('../templates/db.php');
 
 $carid = 0;
 if(isset($_POST['carid'])){

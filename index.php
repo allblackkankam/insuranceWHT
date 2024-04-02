@@ -17,7 +17,7 @@
                     <div class="card disable-rounded-right mb-0 h-100 d-flex justify-content-center">
                         <div class="card-header p-2">
                             <div class="card-title">
-                                <h4 class="text-center">Welcome Back</h4>
+                                <h4 class="text-center">ZIBA ESTR GHANA</h4>
                                 <hr class="mb-0">
                             </div>
                         </div>

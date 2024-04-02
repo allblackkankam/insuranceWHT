@@ -4629,7 +4629,7 @@ fieldset:disabled a.btn {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: hsl(46.67deg 27.27% 93.53%);
   background-clip: border-box;
   border: 0 solid #dfe3e7;
   border-radius: 0.267rem;

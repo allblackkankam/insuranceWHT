@@ -2361,7 +2361,7 @@ ul.list-inline li {
 
 .nav-pills .nav-link,
 .nav-tabs .nav-link {
-    background-color: #F2F4F4;
+    background-color: hsl(46.67deg 27.27% 93.53%);
     color: #475F7B
 }
 
