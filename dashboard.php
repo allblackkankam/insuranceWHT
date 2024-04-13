@@ -31,6 +31,28 @@
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
 
+    <link rel="stylesheet" href="app-assets\css\months.css">
+</head>
+<body>
+  <div style="margin-top: 100px;">
+  
+  <div class="Jan">JANUARY</div>
+  <div class="Feb">FEBRUARY</div>
+  <div class="Mar">MARCH</div>
+  <div class="Apr">APRIL</div>
+  <p>
+  <div class="May">MAY</div>
+  <div class="Jun">JUNE</div>
+  <div class="Jul">JULY</div>
+  <div class="Aug">AUGUST</div></p>
+  <p>
+  <div class="Sept">SEPTEMBER</div>
+  <div class="Oct">OCTOBER</div>
+  <div class="Nov">NOVEMBER</div>
+  <div class="Dec">DECEMBER</div></p>
+
+</div>
+
     <?php require("templates/footer.php") ?>
 
     <?php require("templates/foot.php") ?>
@@ -41,6 +63,5 @@
 
   </body>
   <!-- END: Body-->
-
 
 </html>
