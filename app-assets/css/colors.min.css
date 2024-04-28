@@ -1502,15 +1502,15 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 }
 
 .btn-primary {
-    border-color: rgb(34, 40, 66) !important;
-    background-color:  rgb(34, 40, 66) !important;
+    border-color: #3775EA!important;
+    background-color:  #3775EA!important;
     color: #FFF
 }
 
 .btn-primary.hover,
 .btn-primary:hover {
-    background-color: #FFF !important;
-    color:  rgb(34, 40, 66);
+    background-color: #719DF0!important;
+    color:  #fff
 }
 
 .btn-primary.hover.glow,
@@ -1521,7 +1521,7 @@ select.select-light-light~.select2-container .select2-selection--multiple .selec
 .btn-primary.active,
 .btn-primary:active,
 .btn-primary:focus {
-    background-color:  rgb(34, 40, 66) !important;
+    background-color:  #3775EA !important;
     color: #FFF !important
 }
 

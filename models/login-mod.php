@@ -48,7 +48,7 @@
 					if(password_verify($password,$passwordDb) and $status=="0" ){  
 						$whatAction="1"; 							
 					}elseif(password_verify($password,$passwordDb) and $status=="1" ){
-						$loginErr="";
+						$loginErr="Account Restricted .";
 						$whatAction="0";
 					}else{				  
 						$loginErr= "Invalid Password or Username.";			

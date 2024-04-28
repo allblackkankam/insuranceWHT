@@ -1,5 +1,5 @@
 <!-- BEGIN: Footer-->
-    <footer class="footer footer-white bg-white">
+    <footer class="footer">
       <p class="clearfix mb-0">
         <span class="float-left d-inline-block" id="copyright"> &copy; 
             <script>

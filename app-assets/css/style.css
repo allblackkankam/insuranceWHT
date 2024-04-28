@@ -45,10 +45,10 @@ body{
     margin: 15% auto;
 }
 .ims{
-	background: #1a233a;
+	background: #fff;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #373e52;
+    border: 1px solid #dfe3e7;
 }
 .alert.alert-success,.alert.alert.alert-danger{
     box-shadow: none !important;
@@ -106,19 +106,15 @@ body{
     margin-top: 100px;
 }
 
-.Jan:hover,.Feb:hover,.Mar:hover,.Apr:hover,.May:hover,
-  .Jun:hover,.Jul:hover,.Aug:hover,.Sept:hover,.Oct:hover,
-  .Nov:hover,.Dec:hover{
+.months.passed:hover{
   background-color: rgb(34, 40, 66);
-  color:white;
+  color: white !important;;
   box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
   transition: 0.5s;
   border: 1px;
   cursor: pointer;
   }
-  .Jan:active,.Feb:active,.Mar:active,.Apr:active,.May:active,
-  .Jun:active,.Jul:active,.Aug:active,.Sept:active,.Oct:active,
-  .Nov:active,.Dec:active{
+  .months.passed:active{
     background-color:white;
     color:rgb(34, 40, 66);
     box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
@@ -127,17 +123,24 @@ body{
     cursor: pointer;
     }
   
-  .Jan,.Feb,.Mar,.Apr,.May,.Jun,.Jul,.Aug,.Sept,.Oct,.Nov,.Dec{
-    display:flex;
-    flex-direction: row;
-    background-color:hsl(46.67deg 27.27% 93.53%);
+  .months{
     padding:30px;
-    width:150px;
-    height:150px;
+    width:100%;
+    height:300px;
     font-weight:bold;
     display:inline-block;
-    margin-top:30px;
     border-radius:10px;
     transition: 0.5s;
-    margin: 5px;
   }
+
+  .passed {
+    background-color: #eee;
+    }
+    /* Style for disabled months */
+    .not-passed{
+        border: 1px solid #eee;;
+    }
+
+    .swal-footer{
+        text-align: center!important;
+    }

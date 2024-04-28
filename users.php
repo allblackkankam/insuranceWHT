@@ -1,21 +1,20 @@
 
 
 <!DOCTYPE html>
-<?php ob_start(); ?>
+
 <html class="loading" lang="en">
-  <?php require("templates/head.php") ?>
+  <?php 
+    require("templates/head.php");
+    require("models/auth.php"); 
 
-  <?php require("models/auth.php") ?>
-
+   ?>
+ 
   <!-- BEGIN: Body-->
   <body class="vertical-layout vertical-menu-modern 2-columns  navbar-sticky footer-static light-layout" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
   
-  <?php require("templates/header.php") ?>
-  
-  
   <?php 
-        require("templates/left-nav.php");
-     
+    require("templates/header.php");
+    require("templates/left-nav.php");
   ?>
    
 
@@ -23,468 +22,343 @@
     <div class="app-content content">
       <div class="content-overlay"></div>
         <div class="content-wrapper">
-           <div class="content-header row">
-              <div class="content-header-left col-12 mb-2 mt-1">
-                <div class="row breadcrumbs-top">
-                  <div class="col-12">
-                     <ul class="nav nav-tabs" role="tablist">
-                     <li class="nav-item current">
-                          <a class="nav-link active editclose" id="home-tab" data-toggle="tab" href="#home" aria-controls="home" role="tab" aria-selected="false">
-                            <i class="bx bxs-data align-middle"></i>
-                            <span class="align-middle">User List</span>
-                          </a>
-                        </li>
-                        <li class="nav-item ">
-                          <a class="nav-link " id="users-tab" data-toggle="tab" href="#users" aria-controls="users" role="tab" aria-selected="true">
-                            <i class="bx bx-plus-medical align-middle"></i>
-                            <span class="align-middle">Create Users</span>
-                            
-                          </a>
-                        </li>
+          <div class="content-header row"></div>
+            <div class="content-body">
+              <div class="card mt-3">
+                <div class="card-header">
+                    <h4 class="card-title font-weight-bolder text-uppercase">Users</h4>
+                    <div class="heading-elements">
+                        <ul class="list-inline mb-0">
                         
-                      </ul>
-                  </div>
+                        <li class="ml-2"><button class="btn btn-primary create">Create User</button></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="card-content">
+                    <div class="card-body">
+                      <div id="load-data">
+
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
-            <div class="content-body"><!-- Dashboard Ecommerce Starts -->
-              <section id="dashboard-ecommerce">
-                  
-                <div class="tab-content">
-                  <div class="tab-pane active" id="home" aria-labelledby="home-tab" role="tabpanel">
-                  <h4 class="card-title">User Records</h4>
-                  <div class="card">
-                    <div class="col-md-12">
-                      <div class="card-content">
-                        <div class="card-body">
-                          <div class="table-responsive">
-                            <table class="table zero-configuration table table-striped">
-                              <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Status</th>
-                                    <th>Date Added</th>
-                                    <th>Action</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                  <?php Users(); ?>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  </div>
-                  <div class="tab-pane" id="users" aria-labelledby="users-tab" role="tabpanel">
-                    <h4 class="card-title">Add User</h4>
-                    <div class="card">
-                      <div class="col-md-12">
-                        <div class="card-content">
-                          <div class="card-body">
-                          <form action="" enctype="multipart/form-data" id="form_user">
-                            <div id="msg"></div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <fieldset class="form-group">
-                                      <label>User Name<span class="text-danger" id="u_nameErr"></span></label>
-                                      <input type="text" class="form-control" name="u_name">
-                                      <small>Should be at least 5 characters long</small>
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-6">
-                                <fieldset class="form-group">
-                                    <label >Email<span class="text-danger" id="u_mailErr"></span></label>
-                                    <input type="email" class="form-control" name="u_mail" >
-                                </fieldset>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <fieldset class="form-group">
-                                      <label>Password<span class="text-danger" id="u_passErr"></span></label>
-                                      <input type="password" class="form-control visi" name="u_pass" >
-                                      <span toggle=".visi" class="bx bx-show field-icon toggle-password"></span>
-                                      <small>Password should have letters , numbers and at least 6 characters long.</small>
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-6">
-                                <fieldset class="form-group">
-                                    <label >Retype-Password<span class="text-danger" id="re_upassErr"></span></label>
-                                    <input type="password" class="form-control visi" name="re_upass">
-                                </fieldset>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <fieldset class="form-group">
-                                      <label>Company Name <span class="text-danger" id="u_comErr"></span></label>
-                                      <input type="text" class="form-control" name="u_com" >
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-6">
-                                <fieldset class="form-group">
-                                    <label >Company Number<span class="text-danger" id="u_numErr"></span></label>
-                                    <input type="text" class="form-control" name="u_num" >
-                                </fieldset>
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="col-md-6">
-                                  <fieldset class="form-group">
-                                      <label>Country<span class="text-danger" id="u_conErr"></span></label>
-                                      <select name="u_con" class=" custom-select">
-                                          <option >Ghana</option>
-                                          <option >Nigeria</option>
-                                      </select>
-                                  </fieldset>
-                              </div>
-                              <div class="col-md-6">
-                                  <fieldset class="form-group">
-                                      <label>Location<span class="text-danger" id="u_locErr"></span></label>
-                                      <input type="text" class="form-control" name="u_loc" >
-                                  </fieldset>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                                <label>Company Logo <span class="" id="u_picErr"></span></label>
-                                <div  class="ims row" style="margin-bottom: 20px;">
-                                    <div class="dz-message col-md-6" style="margin-top: 30px;"> 
-                                        <h6>Click to upload image size 500KB</h6>
-                                      
-                                        <div class="fallback">
-                                            <input name="u_pic"  type="file" class="profileDisplay" onchange="displayImage(this)" >
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                          <div> 
-                                            <img src="app-assets/images/picture.png" onclick="triggerClick()"  class="profileImage pic-view" > 
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-
-                              <button class="btn btn-primary" id="create_user" type="submit">Save</button>
-                          </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                  </div>
-                </div>
-                            
-              </section>
-              <?php 
-
-                if(isset($_GET['delete'])){
-                    $id =  base64_decode($_GET["delete"]);
-                    
-                    $query = "DELETE FROM users WHERE u_id = $id ";
-
-                    $result = mysqli_query($conn,$query);
-
-                    header('Location:users');
-                }
-
-                if(isset($_GET['block'])){
-                    $id = base64_decode($_GET["block"]);
-                    
-                    $query = "UPDATE users SET u_status = 'block' WHERE u_id = $id";
-
-                    $result = mysqli_query($conn,$query);
-
-                    header('Location:users');
-
-                }
-                if(isset($_GET["open"])){
-                    $id = base64_decode($_GET["open"]);
-                    
-                    $query = "UPDATE users SET u_status = 'open' WHERE u_id = $id";
-
-                    $result = mysqli_query($conn,$query);
-
-                    header('Location:users');
-                } 
-                if(isset($_GET["reset"])){
-                  $id = base64_decode($_GET["reset"]);
-                  
-                  $u_pass = "abc123";
-                  $password=password_hash($u_pass,PASSWORD_DEFAULT);
-                  $query = "UPDATE users SET u_pass='$password' WHERE u_id = $id";
-
-                  $result = mysqli_query($conn,$query);
-
-                  header('Location:users');
-              }
-
-
-              ?>
-              <!-- Dashboard Ecommerce ends -->
         </div>
-      </div>
     </div>
     <!-- END: Content-->
 
+    <div class="modal fade text-left" id="createmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Create User</h3>
+                    <button type="button" class="close rounded-pill editclose" data-dismiss="modal" aria-label="Close">
+                    <i class="bx bx-x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" enctype="multipart/form-data" id="form_user">
+                        <div id="msg"></div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>First Name<span class="text-danger" id="firstnameErr"></span></label>
+                                    <input type="text" class="form-control" name="first_name" id="first_name">
+                                    <input type="hidden" class="form-control" name="action" value="0">
+                                    <input type="hidden" class="form-control" name="type" id="type">
+                                    <input type="hidden" class="form-control" name="id" id="id">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label >First Name<span class="text-danger" id="lastnameErr"></span></label>
+                                    <input type="text" class="form-control" name="last_name"  id="last_name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>User Name<span class="text-danger" id="usernameErr"></span></label>
+                                    <input type="text" class="form-control" name="username" id="username">
+                                    <small>Should be at least 5 characters long</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="form-group">
+                                    <label >Email<span class="text-danger" id="mailErr"></span></label>
+                                    <input type="email" class="form-control" name="mail" id="mail" >
+                                </div>
+                            </div>
+                            <div class="col-md-6 passremoved">
+                                <div class="form-group">
+                                    <label>Password<span class="text-danger" id="passErr"></span></label>
+                                    <input type="password" class="form-control visi" name="pass" >
+                                    <span toggle=".visi" class="bx bx-show field-icon toggle-password" style="left: 89%"></span>
+                                    <small>Password should have letters , numbers and at least 6 characters long.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6 passremoved">
+                                <div class="form-group ">
+                                    <label >Retype-Password<span class="text-danger" id="re_passErr"></span></label>
+                                    <input type="password" class="form-control visi" name="re_pass">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label >Contact <span class="text-danger" id="contactErr"></span></label>
+                                    <input type="text" class="form-control" name="contact" id="contact">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>User Role <span class="text-danger" id="roleErr"></span></label>
+                                    <select name="user_role" id="user_role" class="form-control">
+                                        <option value="">Select role</option>
+                                        <option value="2">Admin</option>
+                                        <option value="3">Claims Officer </option>
+                                        <option value="4">Clerk</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Close</span>
+                    </button>
+                    <button type="button" class="btn btn-primary ml-1" id="create_user" >
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Save</span>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
-    <!-- <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div> -->
-
-    <?php require("templates/footer.php") ?>
-
-    <?php require("templates/foot.php") ?>
-
-    <?php require("templates/del-modal.php") ?>
-
-    <?php require("templates/cuser-modals.php") ?>
+    <?php 
+      require("templates/footer.php"); 
+      require("templates/foot.php"); 
+    ?>
 
     <script>
- 
- //Create Users
- $(document).ready(function(){
-   $("body").on("click","#create_user",function(e){
-     
-     e.preventDefault();
-  
-     var form = document.getElementById("form_user");
-     var data = new FormData(form);
 
-     $.ajax({
-           url: "/models/create-user-mod.php",
-           type: "POST",
-           processData:false,
-           contentType:false,
-           //dataType:"json",
-           data:data,
-            success:function(results){
-                 $("#create_user").prop("disabled",false);
-                 // $("#msg").fadeIn().html(results);
-                 var array={};
-                 array = JSON.parse(results);
-                 if(array["action"]== "0")
-                 {               
-                     $("#u_nameErr").fadeIn().html(array["u_name"])
-                     $("#u_mailErr").fadeIn().html(array["mail"])
-                     $("#u_passErr").fadeIn().html(array["pass"])
-                     $("#re_upassErr").fadeIn().html(array["re_pass"])
-                     $("#u_comErr").fadeIn().html(array["com"])
-                     $("#u_numErr").fadeIn().html(array["num"])
-                     $("#u_conErr").fadeIn().html(array["con"])
-                     $("#u_locErr").fadeIn().html(array["loc"])
-                     $("#u_picErr").fadeIn().html(array["pic"])
-                  
-                     $("#create_user").html("Try Again")
-                                                                
-                 }else 
-                 if(array["action"]=="1")
-                 {
-                     
-                     $("#msg").html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>User Created Successfully</span></div>');
+       $(document).ready(function()
+       {
+            let loadData=function(){
 
-                     $("input").val("");
-                     
-                     
-
-                     $("#u_nameErr").fadeIn().html(" ")
-                     $("#u_mailErr").fadeIn().html(" ")
-                     $("#u_passErr").fadeIn().html(" ")
-                     $("#re_upassErr").fadeIn().html(" ")
-                     $("#u_comErr").fadeIn().html(" ")
-                     $("#u_numErr").fadeIn().html(" ")
-                     $("#u_conErr").fadeIn().html(" ")
-                     $("#u_locErr").fadeIn().html(" ")
-                     $("#u_picErr").fadeIn().html(" ")
-                     
-                     
-                     $("#create_user").html("Save")
-                 }else 
-                 if(array["action"]=="CSRF")
-                 {
-                     
-                     window.location.href="/errorfiles/400";
-                 }
-                 
-
-                 
+                $.ajax
+                ({
+                    url:"/models/load-data.php",	
+                    type:"POST",
+                    data:{"action":"us"},
+                    success:function(data)
+                    {	
+                        $('#load-data').html(data);  
+                        $(".zero-configuration").DataTable();
+                    }	
+                })
                 
-           }
-           
-       });
 
-   });
- });
+            }
 
- ///Delete Users
- $(document).ready(function(){
-      $("body").on("click",".delete",function(){
-          var id = $(this).attr('id');
-          var del_url = "users?delete="+ id+"";
-          $(".delete_it").attr("href", del_url);
-          
-          $("#user-del").modal("show");
-      });
-  });
+            loadData();
 
-  ///Reset Password
- $(document).ready(function(){
-      $("body").on("click",".reset",function(){
-          var id = $(this).attr('id');
-          var del_url = "users?reset="+ id+"";
-          $(".reset_it").attr("href", del_url);
-          
-          $("#reset").modal("show");
-      });
-  });
-  
+            $("body").on("click",".create",function(){
 
-  //Edit Users
-  $(document).ready(function(){
-        $("body").on("click",".u_edit",function(){
-          var carid = $(this).attr('id');
+                $("#createmodal").modal({
+                    show:true,
+                    keyboard:true
+                })
 
-          // AJAX request
-          $.ajax({
-          url: 'ajax-call/user-edit.php',
-          type: 'post',
-          data: {carid: carid},
-          success: function(response){ 
-            // Add response in Modal body
-            $('.uedit').html(response);
+                $(".passremoved").show();
+                $("#type").val('new');
+                $("#form_user").trigger("reset");
 
-            // Display Modal
-            $("#uedit").modal("show");
-          }
-          });
-          
-        });
-    });
+            
 
-    //Edit Users
- $(document).ready(function(){
-   $("body").on("click","#edit_user",function(e){
+            })
+
+            $("body").on("click","#create_user",function(e){
      
-     e.preventDefault();
-  
-     var form = document.getElementById("form_user_edit");
-     var data = new FormData(form);
+                e.preventDefault();
+            
+                var form = document.getElementById("form_user");
+                var data = new FormData(form);
 
-     $.ajax({
-           url: "/models/edit-user-mod.php",
-           type: "POST",
-           processData:false,
-           contentType:false,
-           //dataType:"json",
-           data:data,
-            success:function(results){
-                 $("#edit_user").prop("disabled",false);
-                //  $("#msge").fadeIn().html(results);
-                 var array={};
-                 array = JSON.parse(results);
-                 if(array["action"]== "0")
-                 {               
-                     $("#u_enameErr").fadeIn().html(array["u_name"])
-                     $("#u_emailErr").fadeIn().html(array["mail"])
-                     $("#u_epassErr").fadeIn().html(array["pass"])
-                     $("#re_eupassErr").fadeIn().html(array["re_pass"])
-                     $("#u_ecomErr").fadeIn().html(array["com"])
-                     $("#u_enumErr").fadeIn().html(array["num"])
-                     $("#u_econErr").fadeIn().html(array["con"])
-                     $("#u_elocErr").fadeIn().html(array["loc"])
-                     $("#u_epicErr").fadeIn().html(array["pic"])
-                  
-                     $("#edit_user").html("Try Again")
-                                                                
-                 }else 
-                 if(array["action"]=="1")
-                 {
-                     
-                     $("#msge").html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>User Edit Successfully</span></div>');
+                $.ajax({
+                    url: "/models/create-user-mod.php",
+                    type: "POST",
+                    processData:false,
+                    contentType:false,
+                    //dataType:"json",
+                    data:data,
+                    success:function(results){
+                       
+                        $("#create_user").html("<img style='width:20px;height:20px' src='app-assets/images/sp-loading.gif'/>").prop("disabled",true);
+                        //$("#msg").fadeIn(1000).html(results);
+                        var array={};
+                        array = JSON.parse(results);
+                        if(array["action"]== "0")
+                        {               
+                            $("#firstnameErr").fadeIn().html(array["firstname"])
+                            $("#lastnameErr").fadeIn().html(array["lastname"])
+                            $("#usernameErr").fadeIn().html(array["username"])
+                            $("#mailErr").fadeIn().html(array["mail"])
+                            $("#passErr").fadeIn().html(array["pass"])
+                            $("#re_passErr").fadeIn().html(array["re_pass"])
+                            $("#roleErr").fadeIn().html(array["role"])
+                            $("#contactErr").fadeIn().html(array["contact"])
+                           
+                            
+                            $("#create_user").html("Try Again").prop("disabled",false);
+                                                                        
+                        }else 
+                        if(array["action"]=="1")
+                        {
+                            
+                            $("#msg").fadeIn().fadeOut(10000).html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Added Successfully</span></div>');
 
-                     
-                     
-                     $("#edit_user").html("Save")
-                 }else 
-                 if(array["action"]=="CSRF")
-                 {
-                     
-                     window.location.href="/errorfiles/400";
-                 }
-                 
+                            $("#form_user").trigger("reset");
+                            //$("#createmodal").modal("hide");
+                            
+                            loadData();
 
-                 
+                            $("#firstnameErr").fadeIn().html("")
+                            $("#lastnameErr").fadeIn().html("")
+                            $("#usernameErr").fadeIn().html("")
+                            $("#mailErr").fadeIn().html("")
+                            $("#passErr").fadeIn().html("")
+                            $("#re_passErr").fadeIn().html("")
+                            $("#roleErr").fadeIn().html("")
+                            $("#contactErr").fadeIn().html("")
+                            
+                            
+                            $("#create_user").html("Save").prop("disabled",false);
+                        }else 
+                        if(array["action"]=="CSRF")
+                        {
+                            
+                            window.location.href="/errorfiles/400";
+                        }
+                            
+
+                            
+                            
+                    }
+                    
+                });
+
+            });
+
+            $('body').on('click','.block ,.delete ,.unblock',function()
+            {   
                 
-           }
-           
-       });
-
-   });
- });
-
- //Change Username
- $(document).ready(function(){
-      $("body").on("click","#profile_name",function(e){
-          
-          e.preventDefault();
-          // $("#save").parents("#form_add").find(".err").fadeOut(); 
-          $("#profile_name").html("<img style='width:20px;height:20px' src='app-assets/images/sp-loading.gif'/>").prop("disabled",true);
-          var form = document.getElementById("form_name");
-          var data = new FormData(form);
-
-          $.ajax({
-              url: "/models/uname-mod.php",
-              type: "POST",
-              processData:false,
-              contentType:false,
-              //dataType:"json",
-              data:data,
-                  success:function(results){
-                      $("#profile_name").prop("disabled",false);
-                      // $("#msgn").fadeIn().html(results);
-                      var array={};
-                      array = JSON.parse(results);
-                      if(array["action"]== "0"){               
-                          
-                          $("#u_cnameErr").fadeIn().html(array["name"]);
-                          
-                      
-                          $("#profile_name").html("Try Again");
-                                                                      
-                      }else 
-                      if(array["action"]=="1")
-                      {
-                          
-                          $("#msgn").html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Username changed Successfully</span></div>');
-
-                          
-                          $("#u_cnameErr").html(" ");
-                          
-
-                          $("#profile_name").html("Change")
-                      }else 
-                      if(array["action"]=="CSRF")
-                      {
-                          
-                          window.location.href="/errorfiles/400";
-                      }
-
-                      
-              }
-              
-          });
-
-      });
-  });
-</script>
+                var code=$(this).parents("tr").attr("data-id");
+                var txt=$(this).attr("data-txt");
+                var up=$(this).attr("data-up");
     
+                swal({
+                    title: txt+ " Alert",
+                    text: "Are you sure you want to do this",
+                    icon: "warning",
+                    buttons: true,
+                    html: true,
+                }).then((willRoute) => {
+                    if (willRoute) {
+                        $.ajax({
+                            url: "models/create-user-mod.php",
+                            type: "POST",
+                            data: { "user_id": code, "action": "2","update":up },
+                            success: function(JSONObject) {
+                                // window.location.href = "";
+                                //$("body").html(JSONObject);
+                                loadData();
+                            }
+                        })
+
+                    }
+                })
+                
+            })
+
+            $('body').on('click','.reset',function()
+            {   
+                
+                var code=$(this).parents("tr").attr("data-id");
+                var txt=$(this).attr("data-txt");
+                var up=$(this).attr("data-up");
+    
+                swal({
+                    title: "Reset Password",
+                    text: "Password would be changed to a12345",
+                    icon: "warning",
+                    buttons: true,
+                    html: true,
+                }).then((willRoute) => {
+                    if (willRoute) {
+                        $.ajax({
+                            url: "models/create-user-mod.php",
+                            type: "POST",
+                            data: { "user_id": code, "action": "1" },
+                            success: function(JSONObject) {
+                                // window.location.href = "";
+                                //$("body").html(JSONObject);
+                                swal({
+                                    title: "Reset Password Successfull",
+                                    text: "Password changed to a12345",
+                                    icon: "success",
+                                    html: true,
+                                })
+                                loadData();
+                            }
+                        })
+
+                    }
+                })
+                
+            })
+
+            $('body').on('click','.edit',function()
+            {   
+                $("#form_user").trigger("reset");
+                var code=$(this).parents("tr").attr("data-id");
+                var txt="Edit User";
+                
+                $("#createmodal").modal("show");
+                $(".passremoved").hide()
+
+                var firstname=$(this).parents("tr").attr("data-fname")
+                var lastname=$(this).parents("tr").attr("data-lname")
+                var email=$(this).parents("tr").attr("data-email")
+                var username=$(this).parents("tr").attr("data-username")
+                var contact=$(this).parents("tr").attr("data-contact")
+                var role=$(this).parents("tr").attr("data-role")
+
+                
+                $("#first_name").val(firstname);
+                $("#last_name").val(lastname);
+                $("#username").val(username);
+                $("#mail").val(email);
+                $("#contact").val(contact);
+                $("#user_role").val(role);
+                $("#id").val(code);
+
+                $("#type").val('update');
+
+                
+            })
+
+
+        })	
+    </script>
     
     <!-- END: Page JS-->
 
   </body>
   <!-- END: Body-->
-
 
 </html>

@@ -22,7 +22,7 @@
     <script src="app-assets/js/scripts/components.min.js"></script>
     <script src="app-assets/js/scripts/footer.min.js"></script>
     <script src="app-assets/js/scripts/customizer.min.js"></script>
-    <script src="app-assets/js/scripts/sweetalert2.all.min.js"></script>
+    <script src="app-assets/js/scripts/sweetalert.min.js"></script>
     <script src="app-assets/js/dropzone/dropzone.js"></script>
     <!-- END: Theme JS-->
 
@@ -57,14 +57,6 @@
                   reader.readAsDataURL(e.files[0]);}
           };
     
-        $(document).ready(function(){
-            $("body").on("click",".editclose",function(e){
-
-            e.preventDefault();
-            window.top.location =window.top.location;
-            
-            });
-        });
 
         $(document).ready(function(){
         $("body").on("click",".view_alert",function(){

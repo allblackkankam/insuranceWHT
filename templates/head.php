@@ -1,7 +1,7 @@
  
   
   <?php require('models/connection.php') ?>
-  <?php require('templates/functions.php') ?>
+  <?php require('models/functions.php') ?>
 
 
   <head>

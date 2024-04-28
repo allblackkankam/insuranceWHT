@@ -7,11 +7,9 @@ html {
 
 html body {
     height: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color:hsl(0, 0%, 80%);
+    background-color:#F2F4F4;
     direction: ltr;
-    font-family: 'HK Grotesk', 'san-serif',serif !important;
+ 
 }
 
 html body .content {
@@ -23,7 +21,7 @@ html body .content {
     backface-visibility: hidden;
     min-height: calc(100% - 3.5rem);
     margin-left: 260px;
-    font-family: 'HK Grotesk', 'san-serif',serif !important;
+  
 }
 
 html body .content.app-content {
@@ -396,7 +394,8 @@ body.fixed-footer footer.footer-light {
 .main-menu.menu-dark .navigation>li.nav-item.sidebar-group-active.has-sub>a:not(.mm-next):after,
 .main-menu.menu-light .navigation>li.nav-item.open.has-sub>a:not(.mm-next):after,
 .main-menu.menu-light .navigation>li.nav-item.sidebar-group-active.has-sub>a:not(.mm-next):after {
-    right: 7px !important
+    right: 7px !important;
+    margin: 0 11px;
 }
 
 .main-menu {
@@ -413,7 +412,7 @@ body.fixed-footer footer.footer-light {
 .main-menu.menu-light {
     color: #727E8C;
     background: #F2F4F4;
-    border: #DFE3E7
+    border-right:1px solid #DFE3E7;
 }
 
 .main-menu.menu-light .navigation {
@@ -459,6 +458,7 @@ body.fixed-footer footer.footer-light {
 .main-menu.menu-light .navigation>li {
     -webkit-transition: background-color .5s ease;
     transition: background-color .5s ease;
+    margin: 0 1rem;
 }
 
 .main-menu.menu-light .navigation>li.nav-item:not(.has-sub) a {
@@ -503,7 +503,7 @@ body.fixed-footer footer.footer-light {
 }
 
 .main-menu.menu-light .navigation>li.active:not(.sidebar-group-active)>a {
-    background: rgb(26 35 58);
+    background: rgb(226, 235, 250);
     color: #5A8DEE;
   
 }
@@ -635,9 +635,6 @@ body.fixed-footer footer.footer-light {
 .main-menu.menu-dark .navigation>li.nav-item.open.has-sub.sidebar-group-active,
 .main-menu.menu-dark .navigation>li.nav-item.sidebar-group-active.has-sub.open,
 .main-menu.menu-dark .navigation>li.nav-item.sidebar-group-active.has-sub.sidebar-group-active {
-    border-radius: .267rem;
-    border: 1px solid #464D5C;
-    background-color: #1A233A;
     -webkit-transition: none;
     transition: none
 }
