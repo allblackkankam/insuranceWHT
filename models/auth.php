@@ -19,6 +19,7 @@
             $user_id = $row['user_id'];
             $username = $row['username'];
             $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
             $email = $row['email'];
             $contact = $row['contact'];
             $center = $row['facility_id'];

@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label >First Name<span class="text-danger" id="lastnameErr"></span></label>
+                                    <label >Last Name<span class="text-danger" id="lastnameErr"></span></label>
                                     <input type="text" class="form-control" name="last_name"  id="last_name">
                                 </div>
                             </div>

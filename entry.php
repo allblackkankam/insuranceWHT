@@ -11,6 +11,7 @@
     $select_query = mysqli_query($conn,$query);
 
     $currentMonth = date('m');
+    $currentYear = date('Y');
     $months = array(
         '01' => 'January',
         '02' => 'February',
@@ -72,9 +73,6 @@
                       
                               ?>
                             </select>
-                            <div class="input-group-append" id="button-addon2">
-                              <button class="btn btn-primary" type="button">Go</button>
-                            </div>
                           </div>
                         </fieldset>
                     </div>
@@ -96,9 +94,6 @@
                             }
                             ?>
                           </select>
-                          <div class="input-group-append" id="button-addon2">
-                            <button class="btn btn-primary" type="button">Filter</button>
-                          </div>
                         </div>
                       </fieldset>
                     </div>
@@ -114,13 +109,18 @@
                            
                             // Generate options for years from current year to 10 years ago
                             foreach ($months as $monthNumber => $monthName) {
-                                $selected = ($currentMonth == $monthNumber) ? 'selected' : '';
-                                echo "<option value=\"$monthNumber\" $selected>$monthName</option>";
-                            }
+                              $disabled = '';
+                              // Check if the month is in the future
+                              if ($currentYear < date('Y') || ($currentYear == date('Y') && $monthNumber > $currentMonth)) {
+                                  $disabled = 'disabled';
+                              }
+                              $selected = ($currentMonth == $monthNumber) ? 'selected' : '';
+                              echo "<option value=\"$monthNumber\" $selected $disabled>$monthName</option>";
+                          }
                             ?>
                           </select>
                           <div class="input-group-append" id="button-addon2">
-                            <button class="btn btn-primary" type="button">Filter</button>
+                            <button class="btn btn-primary" type="button">Go</button>
                           </div>
                         </div>
                       </fieldset>

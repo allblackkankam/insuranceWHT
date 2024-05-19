@@ -87,6 +87,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         
         if($count_duplicate_u_name > 0){
             $usernameErr = " already exist"; 
+            $send = 0;
         }    
         
         if(empty($mail)){

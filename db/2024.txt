@@ -1,5 +1,7 @@
 
-CREATE TABLE `insurancedb`.`insurance` (`id` INT NOT NULL AUTO_INCREMENT , `facility_id` VARCHAR(200) NOT NULL DEFAULT '' , `insurance_name` VARCHAR(200) NOT NULL DEFAULT '' , `insurance_code` VARCHAR(50) NOT NULL DEFAULT '' , `insurance_status` TINYINT(1) NOT NULL DEFAULT '0' , `date` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM; 
+CREATE TABLE `insurancedb`.`insurance` (`id` INT NOT NULL AUTO_INCREMENT , `facility_id` VARCHAR(200) NOT NULL DEFAULT '' , `insurance_name` VARCHAR(200) NOT NULL DEFAULT '' , `insurance_code` VARCHAR(50) NOT NULL DEFAULT '' , `insurance_status` TINYINT(1) NOT NULL DEFAULT '0' , `date` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM;
+
+CREATE TABLE `insurancedb`.`entry` (`id` INT NULL , `facility_id` VARCHAR(50) NOT NULL DEFAULT '' , `user_id` VARCHAR(50) NOT NULL DEFAULT '' , `entry_id` VARCHAR(20) NOT NULL DEFAULT '' , `amount_drugs` INT NOT NULL DEFAULT '0' , `amount_others` INT NOT NULL DEFAULT '0' , `adjustment` INT NOT NULL DEFAULT '0' , `drugs_paid` INT NOT NULL DEFAULT '0' , `others_paid` INT NOT NULL DEFAULT '0' , `tax` INT NOT NULL DEFAULT '0' , `tax_paid` TINYINT(1) NOT NULL DEFAULT '0' , `balance` INT NOT NULL , `in_entry` TINYINT(1) NOT NULL DEFAULT '0' , `date` DATETIME NOT NULL ) ENGINE = MyISAM; 
 
 
 
