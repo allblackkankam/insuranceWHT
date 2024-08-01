@@ -24,8 +24,9 @@
     <script src="app-assets/js/scripts/customizer.min.js"></script>
     <script src="app-assets/js/scripts/sweetalert.min.js"></script>
     <script src="app-assets/js/dropzone/dropzone.js"></script>
+    <script src="app-assets/vendors/js/extensions/toastr.min.js"></script>
     <!-- END: Theme JS-->
-
+    <script src="app-assets/js/scripts/extensions/toastr.min.js"></script>
     <!-- BEGIN: Page JS-->
     
 

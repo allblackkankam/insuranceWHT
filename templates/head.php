@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/tables/datatable/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/apexcharts.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -37,6 +38,7 @@
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/toastr.min.css">
     <link rel="stylesheet" type="text/css" href="app-assets/css/style.css">
     <!-- END: Custom CSS-->
 
