@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $monthName=date('F', mktime(0,0,0, $month,10));
 
-    $query = "SELECT * FROM entry WHERE facility_id = '$center' AND insurance_code = '$insurance' AND entry_id = '$year$month' ORDER BY id asc;";
+    $query = "SELECT * FROM entry WHERE facility_id = '$center' AND insurance_code = '$insurance' AND entry_id = '$year-$month' ORDER BY id asc;";
     $query.= "SELECT insurance_name FROM insurance WHERE facility_id = '$center' AND insurance_code = '$insurance';";
    
     mysqli_multi_query($conn,$query);
@@ -52,6 +52,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     $drugsPaid=0;
                     $taxPaid=0;
                     $amountReceived=0;
+                    $serviceAmount=0;
+                    $drugAmount=0;
+                    $serviceAdj=0;
+                    $drugAdj=0;
 
                     while ($row = mysqli_fetch_array($select_query)) {
                         if ($row['type'] == 0) {
@@ -61,7 +65,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             $serviceAdj= $row["adjustment_services"];
                             $drugAdj= $row["adjustment_drugs"];
 
-                            $chargerble = $serviceAmount+$drugAmount-$serviceAdj-$drugAdj;
+                            $total = $serviceAmount+$drugAmount;
+                            $totaladj = $serviceAdj+$drugAdj;
+                            $chargeable = $serviceAmount+$drugAmount-$serviceAdj-$drugAdj;
 
                             $service=$serviceAmount-$serviceAdj;
                             $drug = $drugAmount-$drugAdj;
@@ -71,7 +77,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                             $WHTtotal = $servicePercent+$drugPercent;
 
-                            $amountReceivable =  $chargerble- $WHTtotal;
+                            $amountReceivable =  $chargeable- $WHTtotal;
                             
                         } else if ($row['type'] == 1) {
                             $type1[] = $row;
@@ -113,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item edit" href="javascript:void(0)" ><i class="bx bx-edit-alt mr-1"></i> Edit</a>
-                                            <a class="dropdown-item delete text-danger" href="javascript:void(0)" data-txt="Delete" data-up="2"><i class="bx bx-trash mr-1 text-danger" data-type="0"></i> Delete</a>
+                                            <a class="dropdown-item delete text-danger" href="javascript:void(0)" data-txt="Delete" data-up="2" data-type="0"><i class="bx bx-trash mr-1 text-danger" ></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -144,7 +150,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="menu"></span>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item editpayment" href="javascript:void(0)" ><i class="bx bx-edit-alt mr-1"></i> Edit</a>
-                                            <a class="dropdown-item delete text-danger" href="javascript:void(0)" data-txt="Delete" data-up="2"><i class="bx bx-trash mr-1 text-danger" data-type="1"></i> Delete</a>
+                                            <a class="dropdown-item delete text-danger" href="javascript:void(0)" data-txt="Delete" data-up="2" data-type="1"><i class="bx bx-trash mr-1 text-danger" ></i> Delete</a>
                                         </div>
                                     </div>
                                 </td>
@@ -175,15 +181,27 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             <div class="table-responsive">
                             <table class="table table-borderless table-hover mb-0">
                                 <tbody>
-                                <tr>
+                                 <tr>
                                     <td>
-                                    <div class="d-flex align-items-center text-bold-500">Chargerble</div>
+                                    <div class="d-flex align-items-center text-bold-500">Total Claims Submitted</div>
                                     </td>
-                                    <td class="text-right">'.$chargerble.'</td>
+                                    <td class="text-right">'.$total.'</td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                    <div class="d-flex align-items-center text-bold-500">Total Adjusted</div>
+                                    </td>
+                                    <td class="text-right">'.$totaladj.'</td>
                                 </tr>
                                 <tr>
                                     <td>
-                                    <div class="d-flex align-items-center text-bold-500">WHT Rounded</div>
+                                    <div class="d-flex align-items-center text-bold-500">Chargeable</div>
+                                    </td>
+                                    <td class="text-right">'.$chargeable.'</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <div class="d-flex align-items-center text-bold-500">WHT</div>
                                     </td>
                                     <td class="text-right">'.$WHTtotal.'</td>
                                 </tr>

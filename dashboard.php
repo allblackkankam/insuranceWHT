@@ -40,8 +40,8 @@
                           
                           // Generate options for years from current year to 10 years ago
                           for ($year = $currentYear; $year >= $currentYear - 10; $year--) {
-                              $selected = ($year == $_GET['year']) ? 'selected' : '';
-                              echo "<option value='$year' $selected>$year</option>";
+                            
+                              echo "<option value='$year'>$year</option>";
                           }
                           ?>
                         </select>
@@ -52,45 +52,9 @@
                     </fieldset>
                   </div>
                   <div class="col-12">
-                    <div class="row">
-                      <!-- <div class="col-md-3 col-sm-6 mb-sm-1">
-                        
-                      </div> -->
-
-                      <?php
-                        // Determine the current year
-                        $currentYear = date('Y');
-
-                        // Array of month names
-                        $months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-
-                        // Get current month
-                        $currentMonth = date('n');
-
-                        // Loop through each month and create a div for each one
-                        foreach ($months as $key => $month) {
-                            // Check if the month has passed or is the current month
-                            if (($key + 1) <= $currentMonth) {
-                                echo "<div class='col-md-3 col-sm-6 mb-sm-1'>
-                                        <div class='months passed' id='entry'>
-                                          <p class='font-size-large'>$month</p>
-                                          <div class='mt-2'>
-                                            <p>Total Submitted <span class='float-right font-4'>200</span></p>
-                                            <p>Total Drugs <span class='float-right font-4'>200</span></p>
-                                            <p>Total Other Servives <span class='float-right font-4'>200</span></p>
-                                            <p>Total Adjusted <span class='float-right font-4'>200</span></p>
-                                          </div>
-                                          
-                                          
-                                        </div>
-                                      </div>";
-                            } else {
-                                echo "<div class='col-md-3 col-sm-6 mb-sm-1'><div class='months not-passed'>$month</div></div>";
-                            }
-                        }
-                        
-                      ?>
-
+                    <div class="row" id="display">
+                      
+                   
                     </div>
                   </div>
                 </div>
@@ -112,11 +76,36 @@
 
        $(document).ready(function()
         {
-            $("body").on("click","#entry",function(e){
-              e.preventDefault();
-              window.location.href="entry";
+          let loadData=function(){
+           
+            var year = $("#year").val();
+           
+            // alert(month);
 
+            $.ajax({
+              url: "/models/load-dashboard.php",
+              type: "POST",
+              data:{"year":year,},
+              success:function(results){
+                  
+                $("#display").html(results);
+            
+              }
             });
+            
+          }
+          
+          loadData();
+          
+          $("body").on("click","#entry",function(e){
+            e.preventDefault();
+            window.location.href="entry";
+
+          });
+
+          $("body").on("change","#year",function(){
+            loadData();
+          });
         })	
     </script>
     

@@ -12,7 +12,7 @@
       <div class="content-wrapper">
         <div class="content-body"><!-- forgot password start -->
           <section id="auth-login" class="flexbox-container">
-            <div class="col-xl-3 col-md-6 col-12 m-5">
+            <div class="col-xl-4 col-md-6 col-12 m-5">
                 <div class="card ">
                     <div class="card disable-rounded-right mb-0 h-100 d-flex justify-content-center">
                         <div class="card-header p-2">

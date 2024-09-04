@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         if($_POST["type"]=="new"){
             $en_type ="0";
             $query = "INSERT INTO entry (facility_id,user_id,entry_id,insurance_code,amount_drugs,amount_services,adjustment_services,adjustment_drugs,type,date)
-            VALUES('$center','$user_id','$month','$insurance','$drugs_amt','$service_amt','$service_adj',' $drugs_adj','$en_type', NOW());";
+            VALUES('$center','$user_id','$month','$insurance','$drugs_amt','$service_amt','$service_adj','$drugs_adj','$en_type', NOW());";
             $result = mysqli_query($conn,$query) or die(mysqli_error($conn)); 
         }else{
             $id =mysqli_real_escape_string($conn,test_input($_POST['id']));

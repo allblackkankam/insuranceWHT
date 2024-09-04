@@ -25,7 +25,7 @@
         <div class="content-wrapper">
           <div class="content-header"></div>
             <div class="content-body"><!-- Dashboard Ecommerce Starts -->
-              <div class="col-md-6 mx-auto">
+              <div class="col-md-8 mx-auto">
                 <div class="card mt-3">
                   <div class="card-header">
                       <h4 class="card-title font-weight-bolder text-uppercase mb-2">Insurance Company</h4>

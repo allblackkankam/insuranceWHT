@@ -1,0 +1,135 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    
+}
+
+.hr {
+    border-bottom: 2px solid #000;
+    clear: both;
+}
+
+.mb-0 {
+    margin: 0px;
+}
+
+label {
+    display: inline-block !important;
+    width: 10%;
+}
+
+.table-bordered {
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+
+.table-bordered2 {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.div-1 {
+    width: 50%;
+    float: left;
+}
+
+.div-2 {
+    width: 50%;
+    float: right;
+}
+
+.comment {
+    margin-top: 30px;
+}
+
+.comment h4 {
+    margin-bottom: 10px;
+}
+
+.com {
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: justify;
+}
+
+.val {
+    margin-top: 30px;
+}
+
+.info {
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+.result {
+    padding: 20px;
+}
+
+input {
+    padding-top: 40px
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #000000;
+    padding: 3px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase !important;
+}
+
+.table-bordered2 td,
+.table-bordered2 th {
+    padding: 3px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.titles .data {
+    text-align: right;
+}
+
+ul {
+    padding: 0 !important;
+}
+
+.titles span {
+    text-align: right;
+}
+
+.bold-row {
+    font-weight: bold;
+}
+.head-state td,
+.head-state th{
+    background:#000 !important;
+    color: #fff !important;
+}
+
+.total td,
+.total th{
+    background:rgb(189, 189, 189) !important;
+}
+
+.text-center td{
+    text-align: center !important;
+}
+.caps{
+    text-transform: uppercase !important;
+}
+

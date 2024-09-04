@@ -13,15 +13,15 @@
     $currentMonth = date('m');
     $currentYear = date('Y');
     $months = array(
-        '01' => 'January',
-        '02' => 'February',
-        '03' => 'March',
-        '04' => 'April',
-        '05' => 'May',
-        '06' => 'June',
-        '07' => 'July',
-        '08' => 'August',
-        '09' => 'September',
+        '1' => 'January',
+        '2' => 'February',
+        '3' => 'March',
+        '4' => 'April',
+        '5' => 'May',
+        '6' => 'June',
+        '7' => 'July',
+        '8' => 'August',
+        '9' => 'September',
         '10' => 'October',
         '11' => 'November',
         '12' => 'December'
@@ -155,7 +155,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Service Amount<span class="text-danger" id="service_amtErr"></span></label>
-                                <input type="number" class="form-control" name="service_amt" id="service_amt">
+                                <input type="number" class="form-control itnumeric" name="service_amt" id="service_amt">
                                 <input type="hidden" class="form-control" name="action" id="action" value="0">
                                 <input type="hidden" class="form-control" name="type" id="type" value="edit">
                                 <input type="hidden" class="form-control" name="id" id="id">
@@ -164,19 +164,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Drugs Amount<span class="text-danger" id="drugs_amteErr"></span></label>
-                                <input type="number" class="form-control" name="drugs_amt" id="drugs_amt">
+                                <input type="number" class="form-control itnumeric" name="drugs_amt" id="drugs_amt">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>Services Adjustment<span class="text-danger" id="service_adjErr"></span></label>
-                                <input type="number" class="form-control" name="service_adj" id="service_adj">
+                                <input type="number" class="form-control itnumeric" name="service_adj" id="service_adj">
                             </div>
                         </div>
                         <div class="col-md-3 ">
                             <div class="form-group">
                                 <label>Drugs Adjustment<span class="text-danger" id="drugs_adjErr"></span></label>
-                                <input type="number" class="form-control" name="drugs_adj" id="drugs_adj">
+                                <input type="number" class="form-control itnumeric" name="drugs_adj" id="drugs_adj">
                             </div>
                         </div>
                         
@@ -300,7 +300,8 @@
             var insurance = $("#insurance").val();
             var year = $("#year").val();
             var month = $("#month").val();
-            var monthid = year+month;
+            var type =$("#type").val();
+            var monthid = year+"-"+month;
 
             dataserial={"insurance":insurance,"monthid":monthid}
         
@@ -308,7 +309,20 @@
             var data = new FormData(form);
             
             var acceptedValue=0;
-            $(".isnumeric").each(function( index, value ){
+            if(type=='new'){
+              $(".isnumeric").each(function( index, value ){
+                  var thisValue=$(this).val();
+                  if($.isNumeric(thisValue)){
+
+                  }else{
+                      $(this).css({"border-color":"red"})
+                      acceptedValue++;
+
+                  }
+
+              })
+            }else{
+              $(".itnumeric").each(function( index, value ){
                 var thisValue=$(this).val();
                 if($.isNumeric(thisValue)){
 
@@ -318,8 +332,10 @@
 
                 }
 
-            })
+              })
+            }
             
+
             if(acceptedValue==0){
               data.append('data', JSON.stringify(dataserial));
 
@@ -360,6 +376,8 @@
                     {
                         
                       window.location.href="/errorfiles/400";
+                    }else{
+                      $("#add_first").html("No Change").prop("disabled",false);
                     }
                   }
                   
@@ -402,9 +420,9 @@
             var code=$(this).parents("tr").attr("data-id");
             var year = $("#year").val();
             var month = $("#month").val();
-            var monthid = year+month;
+            var monthid = year+"-"+month;
             var datatype = $(this).attr("data-type");
-
+          
             if(datatype==0){
               var id = monthid;
             }else{
@@ -453,7 +471,7 @@
             var insurance = $("#insurance").val();
             var year = $("#year").val();
             var month = $("#month").val();
-            var monthid = year+month;
+            var monthid = year+"-"+month;
 
             dataserial={"insurance":insurance,"monthid":monthid}
         
@@ -512,6 +530,8 @@
                       }else if(array["action"]=="CSRF")
                       {
                           window.location.href="/errorfiles/400";
+                      }else{
+                        $("#add_payment").html("No Change").prop("disabled",false);
                       }
                           
 
@@ -546,6 +566,18 @@
 
             $("#typepay").val('update');
 
+          })
+
+          $('body').on('click','.report',function()
+          {   
+             
+            var insurance = $("#insurance").val();
+            var year = $("#year").val();
+            var month = $("#month").val();
+            var monthid = year+"-"+month;
+
+            window.open("printreport?in="+insurance+"&mo="+month+"&yr="+year,"Print Report");
+           
           })
             
         })	

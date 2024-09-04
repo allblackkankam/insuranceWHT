@@ -112,8 +112,8 @@
                                                                     <div class="col-12">
                                                                         <div class="form-group">
                                                                             <div class="controls">
-                                                                                <label>Old Username </label>
-                                                                                <input type="text" class="form-control"  id="oldname" value="<?php echo $username?>" readonly>
+                                                                                <label>Old Username <span class="text-danger" id="oldusernameErr"> </label>
+                                                                                <input type="text" class="form-control"  id="oldname" name="oldname" value="">
                                                                                 <input type="hidden" class="form-control" name="action" value="1">
                                                                                 <input type="hidden" class="form-control" name="id" id="id" value="<?php echo $user_id?>">
                                                                             </div>
@@ -215,7 +215,7 @@
                     success:function(results){
                         
                         $("#update-details").html("<img style='width:20px;height:20px' src='app-assets/images/sp-loading.gif'/>").prop("disabled",true);
-                        $("#msg").fadeIn(1000).html(results);
+                        // $("#msg").fadeIn(1000).html(results);
                         var array={};
                         array = JSON.parse(results);
                         if(array["action"]== "0")
@@ -232,7 +232,13 @@
                         if(array["action"]=="1")
                         {
                             
-                            $("#msg").fadeIn().fadeOut(10000).html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Updated Successfully</span></div>');
+                            toastr.success(
+                                "Updated Successfully.",
+                                "Great!",
+                                { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
+                            );
+
+                            
 
                             //$("#form_user").trigger("reset");
                             //$("#createmodal").modal("hide");
@@ -267,10 +273,16 @@
                 var formdata=$("#update_username").serialize();
                 var old_username =$("#oldname").val();
                 var username =$("#username").val();
-                if(username==""){
+                if(old_username==""){
+                    $("#oldusernameErr").fadeIn().html('Old username is required')
+                }else if(username==""){
                     $("#usernameErr").fadeIn().html('New username is required')
                 }else if(username===old_username){
-                    $("#msg1").fadeIn().html('<div class="alert alert-danger alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>You cannot use the same username</span></div>');
+                    toastr.error(
+                        "You cannot use the same username.",
+                        "Error!",
+                        { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
+                    );
                 }else{
                     $.ajax({
                         url: "/models/edit-user-mod.php",
@@ -279,14 +291,13 @@
                         success:function(results){
                         
                             $("#change-username").html("<img style='width:20px;height:20px' src='app-assets/images/sp-loading.gif'/>").prop("disabled",true);
-                            // $("#msg2").fadeIn(1000).html(results);
+                            $("#msg").html(results);
                             var array={};
                             array = JSON.parse(results);
                             if(array["action"]== "0")
                             {               
-                                $("#oldunernameErr").fadeIn().html(array["oldname"])
+                                $("#oldusernameErr").fadeIn().html(array["oldname"])
                                 $("#usernameErr").fadeIn().html(array["name"])
-                                
                                 
                                 $("#change-username").html("Try Again").prop("disabled",false);
                                                                             
@@ -294,7 +305,11 @@
                             if(array["action"]=="1")
                             {
                                 
-                                $("#msg1").fadeIn().fadeOut(10000).html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Updated Successfully</span></div>');
+                                toastr.success(
+                                    "Updated Successfully.",
+                                    "Great!",
+                                    { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
+                                );
 
                                 //window.location.href="";
                                 
@@ -333,7 +348,7 @@
                         success:function(results){
                         
                             $("#change_password").html("<img style='width:20px;height:20px' src='app-assets/images/sp-loading.gif'/>").prop("disabled",false);
-                            $("#msg2").fadeIn(1000).html(results);
+                            //$("#msg2").fadeIn(1000).html(results);
                             var array={};
                             array = JSON.parse(results);
                             if(array["action"]== "0")
@@ -349,7 +364,11 @@
                             if(array["action"]=="1")
                             {
                                 
-                                $("#msg2").fadeIn().fadeOut(10000).html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Updated Successfully</span></div>');
+                                toastr.success(
+                                    "Updated Successfully.",
+                                    "Great!",
+                                    { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
+                                );
 
                                 //window.location.href="";
                                 
