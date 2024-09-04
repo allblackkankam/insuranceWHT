@@ -133,15 +133,7 @@
                             $amountReceived =  $servicePaid + $drugsPaid;
                             $balance = $amountReceivable - $amountReceived; 
 
-                            $html.='<tr>
-                                <td>'.$new_date.'</td>
-                                <td>Payment of Outstanding Claims For '.$monthName.' '.$year.'</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>'.$taxPaid.'</td>
-                                <td>'.$amountReceived.'</td>
-                                <td>'.$balance.'</td>
-                            </tr>';
+                            $html.='';
 
                             
                         }
@@ -151,6 +143,15 @@
                     $outstanding = $payments + $taxpatment;
 
                     $html.='<tr>
+                                <td>'.$new_date.'</td>
+                                <td>Payment of Outstanding Claims For '.$monthName.' '.$year.'</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>'.$taxPaid.'</td>
+                                <td>'.$amountReceived.'</td>
+                                <td>'.$balance.'</td>
+                            </tr>
+                    <tr>
                         <td>'.$new_date.'</td>
                         <td>Payment of Outsanding Claims</td>
                         <td></td>

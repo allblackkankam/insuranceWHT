@@ -229,7 +229,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Tax Paid<span class="text-danger" id="tax_paidErr"></span></label>
+                                <label>WHT Paid<span class="text-danger" id="tax_paidErr"></span></label>
                                 <input type="number" class="form-control ifnumeric" name="tax_paid" id="tax_paid" value="0">
                             </div>
                         </div>

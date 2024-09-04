@@ -65,9 +65,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             $serviceAdj= $row["adjustment_services"];
                             $drugAdj= $row["adjustment_drugs"];
 
-                            $total = $serviceAmount+$drugAmount;
-                            $totaladj = $serviceAdj+$drugAdj;
-                            $chargeable = $serviceAmount+$drugAmount-$serviceAdj-$drugAdj;
+                            $Chargeable = $serviceAmount+$drugAmount-$serviceAdj-$drugAdj;
 
                             $service=$serviceAmount-$serviceAdj;
                             $drug = $drugAmount-$drugAdj;
@@ -77,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
                             $WHTtotal = $servicePercent+$drugPercent;
 
-                            $amountReceivable =  $chargeable- $WHTtotal;
+                            $amountReceivable =  $Chargeable- $WHTtotal;
                             
                         } else if ($row['type'] == 1) {
                             $type1[] = $row;
@@ -134,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             <tr>
                                 <th>Services Paid</th>
                                 <th>Drugs Paid</th>
-                                <th>Tax Paid</th>
+                                <th>WHT Paid</th>
                                 <th width="20%">Action</th>
                             </tr>
                         </thead>
@@ -183,21 +181,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                 <tbody>
                                  <tr>
                                     <td>
-                                    <div class="d-flex align-items-center text-bold-500">Total Claims Submitted</div>
-                                    </td>
-                                    <td class="text-right">'.$total.'</td>
-                                </tr>
-                                 <tr>
-                                    <td>
-                                    <div class="d-flex align-items-center text-bold-500">Total Adjusted</div>
-                                    </td>
-                                    <td class="text-right">'.$totaladj.'</td>
-                                </tr>
-                                <tr>
-                                    <td>
                                     <div class="d-flex align-items-center text-bold-500">Chargeable</div>
                                     </td>
-                                    <td class="text-right">'.$chargeable.'</td>
+                                    <td class="text-right">'.$Chargeable.'</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -213,7 +199,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                                 </tr>
                                  <tr>
                                     <td>
-                                    <div class="d-flex align-items-center text-bold-500">Tax Paid</div>
+                                    <div class="d-flex align-items-center text-bold-500">WHT Paid</div>
                                     </td>
                                     <td class="text-right">'.$taxPaid.'</td>
                                 </tr>
