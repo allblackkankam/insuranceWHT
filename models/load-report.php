@@ -115,11 +115,10 @@ if ($select_query->num_rows > 0) {
                             </div>
                             <hr class="m-0">
                             <div class="card-body">
-                                <table class="table table-bordered mb-0">
-                                    <tr>
-                                        <th >No Data found</th>
-                                    </tr>
-                                </table>
+                                <div class="text-center">
+                                    <img src="app-assets/images/no-results.png" width="150px">
+                                    <h4 class="m-2">No data found</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
