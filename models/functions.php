@@ -18,6 +18,15 @@
   
       // If "By" is not found, return the original string
       return $variable;
-  }
+    } 
+
+    function getMonth($string) {
+      // Split the string by the hyphen
+      $parts = explode("-", $string);
+      $modified_string = isset($parts[1]) ? $parts[1] : $string;
+      $monthname = date('F', mktime(0, 0, 0, $modified_string, 10));
+      
+      return $monthname;
+    }
 
 ?>

@@ -90,7 +90,7 @@ ul li {
     padding: 3px;
     text-align: left;
     font-size: 10px;
-    text-transform: uppercase !important;
+    /* text-transform: uppercase !important; */
 }
 
 .table-bordered2 td,

@@ -83,6 +83,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             $servicePaid+= $row["services_paid"];
                             $drugsPaid+= $row["drugs_paid"];
                             $taxPaid+= $row["tax_paid"];
+                            
 
                             $amountReceived =  $servicePaid + $drugsPaid;
 
@@ -94,16 +95,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                         $taxpatment = $WHTtotal - $taxPaid;
                         $outstanding = $payments + $taxpatment;
 
-                    echo '<table class="table mb-0 dataTable no-footer table-hover">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Services Submitted</th>
-                                <th>Drugs Submitted</th>
-                                <th>Services Adjustment</th>
-                                <th>Drugs Adjustment</th>
-                                <th width="20%">Action</th>
-                            </tr>
-                        </thead>
+                    echo '<table class="table table-bordered mb-0 table-responsive">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Services Submitted</th>
+                                    <th>Drugs Submitted</th>
+                                    <th>Services Adjustment</th>
+                                    <th>Drugs Adjustment</th>
+                                    <th width="20%">Action</th>
+                                </tr>
+                            </thead>
                         <tbody>';
                         foreach ($type0 as $row){
                             echo' <tr data-id="' . $row['id']. '" data-drugamt="'.$row['amount_drugs'].'" data-serviceamt="'.$row['amount_services'].'" data-drugadj="'.$row['adjustment_drugs'].'" data-serviceadj="'.$row['adjustment_services'].'">
@@ -124,24 +125,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             </tr>';
                         }
                     echo'</tbody>
-                </table>
+                
                 <hr class="m-0">';
                     
-                    echo '<table class="table mb-0 dataTable no-footer table-hover">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Services Paid</th>
-                                <th>Drugs Paid</th>
-                                <th>WHT Paid</th>
-                                <th width="20%">Action</th>
-                            </tr>
-                        </thead>
+                    echo '
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Services Paid</th>
+                                    <th>Drugs Paid</th>
+                                    <th>WHT Paid</th>
+                                    <th>Comment</th>
+                                    <th width="20%">Action</th>
+                                </tr>
+                            </thead>
                         <tbody>';
                         foreach ($type1 as $row){
-                            echo'<tr data-id="' . $row['id']. '" data-drugpaid="'.$row['drugs_paid'].'" data-servicepaid="'.$row['services_paid'].'" data-taxpaid="'.$row['tax_paid'].'">
+                            echo'<tr data-id="' . $row['id']. '" data-drugpaid="'.$row['drugs_paid'].'" data-servicepaid="'.$row['services_paid'].'" data-taxpaid="'.$row['tax_paid'].'" data-comment="'.$row['comment'].'">
                                 <td class="">' . $row['services_paid'] . '</td>
                                 <td class="">' . $row['drugs_paid'] . '</td>
                                 <td class="">' . $row['tax_paid'] . '</td>
+                                <td class="">' . $row['comment'] . '</td>
                                <td>
                                     <div class="dropdown">
                                         <span class="bx bx-dots-vertical-rounded font-medium-3 dropdown-toggle nav-hide-arrow cursor-pointer"
@@ -155,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                             </tr>';
                         }
                     echo'</tbody>
-                </table>'; // You can handle type 1 cases here if needed
+                    </table>'; // You can handle type 1 cases here if needed
                     
                 
 

@@ -1,17 +1,17 @@
-<link rel="shortcut icon" type="image/x-icon" href="app-assets/images/favicon.png">
-<?php
-    
-    include("models/connection.php");
-    include("models/functions.php");
-    include("models/auth.php");
 
-    ini_set("pcre.backtrack_limit","500000000");
-    set_time_limit(0);
-    require_once __DIR__ . '/vendor/autoload.php';
-    
-    $insurance = mysqli_real_escape_string($conn,test_input($_GET['in']));
-    $year = mysqli_real_escape_string($conn,test_input($_GET['yr']));
-    $month = mysqli_real_escape_string($conn,test_input($_GET['mo']));
+
+<?php 
+
+include("connection.php");
+include("functions.php");
+include("auth.php");
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+
+    $insurance = mysqli_real_escape_string($conn,test_input($_POST['insurance']));
+    $year = mysqli_real_escape_string($conn,test_input($_POST['year']));
+    $month = mysqli_real_escape_string($conn,test_input($_POST['month']));
 
     if($month==0){
         $monthName='Year';
@@ -34,7 +34,6 @@
     $query = "SELECT * FROM entry WHERE facility_id = '$center' $yearFilter $insuranceFilter ORDER BY insurance_code,entry_id,id;";
     $query.= "SELECT * FROM insurance WHERE facility_id = '$center';";
     $query.= "SELECT insurance_name FROM insurance WHERE facility_id = '$center' AND insurance_code = '$insurance';";
-    $query.= "SELECT * FROM administrator WHERE facility_id = '$center';";
    
     // echo $query;
     mysqli_multi_query($conn,$query);
@@ -43,18 +42,6 @@
     $insurance_result=mysqli_store_result($conn);
     mysqli_next_result($conn);
     $insurance_selected=mysqli_store_result($conn);
-    mysqli_next_result($conn);
-    $facility=mysqli_store_result($conn);
-
-    if(mysqli_num_rows($facility)>0){
-        $row=mysqli_fetch_assoc($facility);
-        $facility_name=$row["facility_name"];		
-        $facility_email=$row["email"];
-        $facility_contact=$row["facility_contact"];
-        $logo=$row["logo"];		
-        $facility_address=$row["address"];	
-        $facility_location=$row["location"];	
-    }
 
     if($insurance==0){
         $name_insurance = "ALL INSURANCE";
@@ -78,26 +65,7 @@
         }
     }
 
-    $fileName=$name_insurance." ".$monthName."-".$year."[Report]";
-    $html='<table class="table table-bordered2">
-    <thead>
-        <tr>
-            <td colspan="2"> 
-                <h2>'.$facility_name.'</h2>
-                <p ><span>Address: ' . $facility_address.' , '.$facility_location.'</span> </p>
-                <p> <span>Contact: ' .$facility_contact.'</a> </p>
-                <p><span>Email: ' .$facility_email.'</span> </p>
-            
-            </td>
-            <th colspan="1"><img src="app-assets/images/'.$logo.'" width="80px" style="text-align:right"></th>
-        </tr>
-        <tr>
-            <th><b>Period - '.$monthName.' '.$year.'</b></th>
-            <th class="caps"><b>CLAIM STATEMENT - '.$name_insurance.'-'.$monthName.' '.$year.'</b></th>
-        </tr>
-    </thead>
-</table>
-<hr>';     
+        
 
     // Initialize an array to store rows grouped by insurance_code and entry_id
 $groupedEntries = [];
@@ -120,15 +88,53 @@ if ($select_query->num_rows > 0) {
         $groupedEntries[$insurance_code][$entry_id][] = $row;
     }
 
+    echo '<section id="table-customer-statistics">
+                <div class="row match-height">
+                    <!-- table latest custoner start -->
+                    <div id="table-latest-customer" class="col-md-12">
+                        <div class="card ">
+                        <div class="card-header">
+                            <h4 class="card-title font-weight-bolder text-uppercase">'.$name_insurance.'-'.$monthName.' '.$year.'</h4>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li class="ml-2"><button class="btn btn-outline-secondary report">Preview</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr class="m-0">
+                        <div class="card-body">';
+}else{
+    echo '<section id="table-customer-statistics">
+                <div class="row match-height">
+                    <!-- table latest custoner start -->
+                    <div id="table-latest-customer" class="col-md-12">
+                        <div class="card ">
+                            <div class="card-header">
+                                <h4 class="card-title font-weight-bolder text-uppercase">'.$name_insurance.'-'.$monthName.' '.$year.'</h4>
+                                
+                            </div>
+                            <hr class="m-0">
+                            <div class="card-body">
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <th >No Data found</th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>';
+                    
 }
 
 // Display each insurance_code with its respective rows, grouped by entry_id
 foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
     // Display the insurance_code as a heading
-    $html.= '<h5 style="margin-bottom:5px;text-transform:uppercase;">Insurance : '.$name[$insurance_code].'</h5>';
+    echo '<h4 class="card-title font-weight-bolder text-uppercase mt-2">Insurance : '.$name[$insurance_code].'</h4>';
     
     // Output table header
-    $html.= '<table class="table table-bordered mb-0">
+    echo '<table class="table table-bordered mb-0">
             <thead class="thead-light">
                 <tr>
                     <th >Date</th>
@@ -179,7 +185,7 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
             if ($row['type'] == 0) {
                 $balanceForEntryId = $amountReceivable;
                 $totalTax = $WHTtotal;
-                $html.= '<tr>
+                echo '<tr>
                         <td ><b>'.$new_date.'</b></td>
                         <td ><b>Total claims processed for '.$monthIn." ".$year.'</b></td>
                         <td ><b>'.$total.'</b></td>
@@ -223,7 +229,7 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
         foreach ($combinedEntries as $combined) {
             $balanceForType1 = $balanceForEntryId - $combined['combined_paid'];
             $totalOutstanding= $balanceForType1 +  ($totalTax -$combined['tax_paid']);
-            $html.= '
+            echo '
             
             <tr>
                 <td >'.$new_date.'</td>
@@ -248,40 +254,12 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
         }
     }
 
-    $html.= '</table>';
+    echo '</table>';
 }
-    $html.='        </div>
+    echo'        </div>
                 </div>
             </div>
         </div>
     </section>';
-
-    $mpdf = new \Mpdf\Mpdf([
-		
-        'margin_top'=>5,
-		'margin_left'=>5,
-		'margin_right'=>5,
-		'margin_bottom'=>5,//this is for the main text
-		'margin_footer'=>4,//this is for the footer
-		'format' => 'A4',
-		'setAutoBottomMargin' => 'stretch',
-		'autoMarginPadding' => 1,
-		'defaultfooterfontsize'=>1,
-		'default_font_size'=>12,
-		'tempDir' => __DIR__ . '/mpdftemp'
-
-        
-    ]);
-
-	// var_dump($html);
-    // echo $html;
-	// $content=$html;
-	//$mpdf->debug = true;
-	$stylesheet = file_get_contents('app-assets/css/print-style.css');
-	$mpdf->SetProtection(array('copy','print'));
-    $mpdf->WriteHTML($stylesheet,\Mpdf\HTMLParserMode::HEADER_CSS);
-    $mpdf->WriteHTML(trim($html),\Mpdf\HTMLParserMode::HTML_BODY);
-    $mpdf->Output( $fileName.".pdf","I");
-
-
+}
 ?>

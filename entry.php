@@ -233,6 +233,13 @@
                                 <input type="number" class="form-control ifnumeric" name="tax_paid" id="tax_paid" value="0">
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Comment<span class="text-danger" id="commentErr"></span></label>
+                                <textarea type="text" class="form-control" name="comment" id="comment"></textarea>
+                            </div>
+                        </div>
+
                     </div>
                   </form>
                 </div>
@@ -557,11 +564,13 @@
             var paid_drugs=$(this).parents("tr").attr("data-drugpaid")
             var paid_services=$(this).parents("tr").attr("data-servicepaid")
             var paid_tax=$(this).parents("tr").attr("data-taxpaid")
+            var comment=$(this).parents("tr").attr("data-comment")
     
             
             $("#drugs_paid").val(paid_drugs);
             $("#service_paid").val(paid_services);
             $("#tax_paid").val(paid_tax);
+            $("#comment").html(comment);
             $("#idpay").val(code);
 
             $("#typepay").val('update');

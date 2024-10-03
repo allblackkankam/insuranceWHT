@@ -26,6 +26,10 @@
               </li>
             </ul>
           </li>
+          <li class="<?php if($pg=='reports'){?> active<?php }?> nav-item"><a href="reports"><i class="ficon bx bxs-report"></i><span class="menu-title" data-i18n="Email">Reports</span></a>
+          </li>
+          <li class="navigation-header"><span>Management</span>
+          </li>
           <hr>
           <li class="<?php if($pg=='users'){?> active<?php }?> nav-item"><a href="users"><i class="ficon bx bxs-user-pin"></i><span class="menu-title" data-i18n="Email">Users</span></a>
           </li>

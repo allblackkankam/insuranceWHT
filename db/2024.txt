@@ -8,4 +8,6 @@ ALTER TABLE `entry` ADD `insurance_code` VARCHAR(20) NOT NULL DEFAULT '' AFTER `
 ALTER TABLE `entry` ADD `adjustment_drugs` INT NOT NULL DEFAULT '0' AFTER `adjustment_others`, ADD `type` TINYINT(1) NOT NULL DEFAULT '0' AFTER `adjustment_drugs`; 
 
 
+////////////////////////////////////////////////////////////////
 
+ALTER TABLE `entry` ADD `comment` TEXT NOT NULL AFTER `balance`; 
