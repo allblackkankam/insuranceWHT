@@ -135,8 +135,8 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
                     <th >Description</th>
                     <th >Amount Claimed</th>
                     <th >Amount Rejected</th>
-                    <th >WH Tax</th>
-                    <th >WH Tax Payed</th>
+                    <th >WHT Tax</th>
+                    <th >WHT Tax Payed</th>
                     <th >Payments</th>
                     <th >Balance</th>
                 </tr>
