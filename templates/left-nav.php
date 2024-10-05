@@ -20,19 +20,29 @@
           </li>
           <li class="<?php if($pg=='entry'){?> active<?php }?> nav-item"><a href="entry"><i class="ficon bx bxs-add-to-queue"></i><span class="menu-title" data-i18n="Email">Create Entry</span></a>
           </li>
-          <li class=" nav-item"><a href="#"><i class="ficon bx bx-cog"></i><span class="menu-title" data-i18n="Invoice">Setup</span></a>
-            <ul class="menu-content">
-              <li class="<?php if($pg=='insurance-company'){?> active<?php }?>"><a href="insurance-company"><i class="bx bxs-right-arrow-alt"></i><span class="menu-item" data-i18n="Invoice List">Insurance</span></a>
-              </li>
-            </ul>
-          </li>
-          <li class="<?php if($pg=='reports'){?> active<?php }?> nav-item"><a href="reports"><i class="ficon bx bxs-report"></i><span class="menu-title" data-i18n="Email">Reports</span></a>
-          </li>
-          <li class="navigation-header"><span>Management</span>
-          </li>
-          <hr>
-          <li class="<?php if($pg=='users'){?> active<?php }?> nav-item"><a href="users"><i class="ficon bx bxs-user-pin"></i><span class="menu-title" data-i18n="Email">Users</span></a>
-          </li>
+          
+          <?php if (isRoleAllowed([1,2])): ?>
+            <li class=" nav-item">
+              <a href="#"><i class="ficon bx bx-cog"></i><span class="menu-title" data-i18n="Invoice">Setup</span></a>
+              <ul class="menu-content">
+                <li class="<?php if($pg=='insurance-company'){?> active<?php }?>"><a href="insurance-company"><i class="bx bxs-right-arrow-alt"></i><span class="menu-item" data-i18n="Invoice List">Insurance</span></a>
+                </li>
+              </ul>
+            </li>
+          <?php endif; ?>
+          <?php if (isRoleAllowed([1,2,3])): ?>
+            <li class="<?php if($pg=='reports'){?> active<?php }?> nav-item"><a href="reports"><i class="ficon bx bxs-report"></i><span class="menu-title" data-i18n="Email">Reports</span></a>
+            </li>
+          <?php endif; ?>
+          
+          <?php if (isRoleAllowed([1,2])): ?>
+            <li class="navigation-header"><span>Management</span>
+            </li>
+            <hr>
+            <li class="<?php if($pg=='users'){?> active<?php }?> nav-item"><a href="users"><i class="ficon bx bxs-user-pin"></i><span class="menu-title" data-i18n="Email">Users</span></a>
+            </li>
+          <?php endif; ?>
+        
         </ul>
       </div>
     </div>

@@ -3,9 +3,12 @@
 <!DOCTYPE html>
 
 <html class="loading" lang="en">
-  <?php require("templates/head.php") ?>
-
-  <?php require("models/auth.php") ?>
+  <?php 
+    require("templates/head.php"); 
+    require("models/auth.php");
+    checkUserRole(array("1","2"));
+  ?>
+  
   <style>
    
     

@@ -78,13 +78,16 @@
                                                     <span>Change Password</span>
                                                 </a>
                                             </li>
-                                            <li class="nav-item mb-1">
-                                                <a class="nav-link d-flex align-items-center" id="account-pill-facility" data-toggle="pill"
-                                                    href="#account-vertical-facility" aria-expanded="false">
-                                                    <i class="bx bx-building"></i>
-                                                    <span>Facility Settings</span>
-                                                </a>
-                                            </li>
+                                            <?php if (isRoleAllowed([1])): ?>
+                                                <li class="nav-item mb-1">
+                                                    <a class="nav-link d-flex align-items-center" id="account-pill-facility" data-toggle="pill"
+                                                        href="#account-vertical-facility" aria-expanded="false">
+                                                        <i class="bx bx-building"></i>
+                                                        <span>Facility Settings</span>
+                                                    </a>
+                                                </li>
+                                            <?php endif; ?>
+                                            
                                         </ul>
                                     </div>
                                     <!-- right content section -->
@@ -395,12 +398,12 @@
                             {
                                 
                                 toastr.success(
-                                    "Updated Successfully.",
+                                    "Updated Successfully__Signing Out.",
                                     "Great!",
                                     { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
                                 );
 
-                                //window.location.href="";
+                                // window.location.href="logout";
                                 
                                 $("#oldunernameErr").fadeIn().html("")
                                 $("#usernameErr").fadeIn().html("")

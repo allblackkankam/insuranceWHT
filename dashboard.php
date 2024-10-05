@@ -106,6 +106,18 @@
           $("body").on("change","#year",function(){
             loadData();
           });
+
+          $('body').on('click','.report',function()
+          {   
+             
+            var insurance ="0";
+            var year = $("#year").val();
+            var month = $(this).attr("data-month");
+            var monthid = year+"-"+month;
+
+            window.open("printreport?in="+insurance+"&mo="+month+"&yr="+year,"Print Report");
+           
+          })
         })	
     </script>
     

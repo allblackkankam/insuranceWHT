@@ -24,7 +24,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $service_adj=mysqli_real_escape_string($conn,test_input($_POST['service_adj']));
         $drugs_adj=mysqli_real_escape_string($conn,test_input($_POST['drugs_adj']));
         $type=mysqli_real_escape_string($conn,test_input($_POST['type']));
-        $comment=mysqli_real_escape_string($conn,test_input($_POST['comment']));
         
         $data=$_POST["data"];
         $dataarray = json_decode($data, true);
@@ -96,7 +95,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         if($_POST["type"]=="new"){
             $en_type ="1";
             $query = "INSERT INTO entry (facility_id,user_id,entry_id,insurance_code,drugs_paid,services_paid,tax_paid,comment,type,date)
-            VALUES('$center','$user_id','$month','$insurance','$drugs_paid','$service_paid','$tax_paid','$comment,'$en_type', NOW());";
+            VALUES('$center','$user_id','$month','$insurance','$drugs_paid','$service_paid','$tax_paid','$comment','$en_type', NOW());";
             $result = mysqli_query($conn,$query) or die(mysqli_error($conn)); 
         }else{
             $id =mysqli_real_escape_string($conn,test_input($_POST['id']));

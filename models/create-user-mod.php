@@ -82,13 +82,32 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             }
         }
             
-        $duplicate_u_name = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' ");
-        $count_duplicate_u_name= mysqli_num_rows($duplicate_u_name);
-        
-        if($count_duplicate_u_name > 0){
-            $usernameErr = " already exist"; 
-            $send = 0;
-        }    
+        if($_POST["type"]=="new"){
+            $duplicate_u_name = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' ");
+            $count_duplicate_u_name= mysqli_num_rows($duplicate_u_name);
+            
+            if($count_duplicate_u_name > 0){
+                $usernameErr = "already exist"; 
+                $send = 0;
+            }  
+        }else{
+             // For editing, we assume the user ID is provided as $user_id
+            $existing_user_query = mysqli_query($conn, "SELECT username FROM users WHERE user_id= '$id'");
+            $existing_user = mysqli_fetch_assoc($existing_user_query);
+            
+            // Check if the new username is different from the current username
+            if ($existing_user['username'] != $username) {
+                // If different, check if the new username already exists in the database
+                $duplicate_u_name = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
+                $count_duplicate_u_name = mysqli_num_rows($duplicate_u_name);
+                
+                if ($count_duplicate_u_name > 0) {
+                    $usernameErr = "Username already exists"; 
+                    $send = 0;
+                }
+            }
+        }
+          
         
         if(empty($mail)){
           

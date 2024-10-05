@@ -6,6 +6,7 @@
   <?php 
     require("templates/head.php");
     require("models/auth.php"); 
+    checkUserRole(array("1","2","3"));
 
     $query= "SELECT * FROM insurance WHERE facility_id ='$center' AND insurance_status = 0;";
     $select_query = mysqli_query($conn,$query);

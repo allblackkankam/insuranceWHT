@@ -11,6 +11,7 @@
 
     if(isset($_SESSION['username'])){
     $user_id = $_SESSION['id'];
+    $use_role =$_SESSION['user_role'];
   
     $query = "SELECT * FROM users WHERE id = $user_id ";
     $select_user_items = mysqli_query($conn, $query);

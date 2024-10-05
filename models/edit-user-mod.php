@@ -90,90 +90,74 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
             }
     }elseif($_POST['action']=='1'){
-        $id = mysqli_real_escape_string($conn,test_input($_POST['id']));
-        $nameusername =mysqli_real_escape_string($conn,test_input($_POST['username']));
-        $oldusername =mysqli_real_escape_string($conn,test_input($_POST['oldname']));
+        $id = mysqli_real_escape_string($conn, test_input($_POST['id']));
+        $nameusername = mysqli_real_escape_string($conn, test_input($_POST['username']));
+        $oldusername = mysqli_real_escape_string($conn, test_input($_POST['oldname']));
 
+        $send = 1;  // Initialize send flag
 
-        if(empty($oldusername)){
-            $oldusernameErr = "  is required"; //add error to error array
-		}else{
-           
-            $olduserquery="SELECT username FROM users WHERE user_id ='$id' LIMIT 1";  					
-			$olduserresult=mysqli_query($conn,$olduserquery)or die(mysqli_error($conn));
-			if($olduserresult)
-		    {
-				$row=mysqli_fetch_assoc($olduserresult);
-				$username=$row["username"];
-				if($oldusername!==$username)
-				{
-                    $oldusernameErr = "Current username is incorrect";	
-                    $send = 0;		  
-				}else
-				{
+        // Convert the new username to lowercase
+        $nameusername = strtolower($nameusername); // Force lowercase for new username
+
+        if (empty($oldusername)) {
+            $oldusernameErr = " is required"; // Add error to error array
+        } else {
+            $olduserquery = "SELECT username FROM users WHERE user_id ='$id' LIMIT 1";
+            $olduserresult = mysqli_query($conn, $olduserquery) or die(mysqli_error($conn));
+
+            if ($olduserresult) {
+                $row = mysqli_fetch_assoc($olduserresult);
+                $username = $row["username"]; // Get current username from database
+                if ($oldusername !== $username) {
+                    $oldusernameErr = "Current username is incorrect";
+                    $send = 0;
+                } else {
                     $oldusernameErr = "";
-                    
-				}				
-																			
-			}
+                }
+            }
         }
 
-        
-
-        if(empty($nameusername)){
-            $usernameErr = "  is required"; //add error to error array
-		}else{
-			if(!preg_match('/^[a-z\d_]{5,20}$/i',  $nameusername))
-            {
-                $usernameErr = " At least 5 character long";
+        if (empty($nameusername)) {
+            $usernameErr = " is required"; // Add error to error array
+        } else {
+            if (!preg_match('/^[a-z\d_]{5,20}$/i', $nameusername)) {
+                $usernameErr = " At least 5 characters long";
                 $send = 0;
             }
         }
 
-       
-            
-        $duplicate_u_name = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' ;");
-        $count_duplicate_u_name= mysqli_num_rows($duplicate_u_name);
-        
-        if($count_duplicate_u_name > 0){
-            $usernameErr = " already exist"; 
+        // Check for duplicate username using lowercase $nameusername
+        $duplicate_u_name = mysqli_query($conn, "SELECT * FROM users WHERE LOWER(username) = '$nameusername';");
+        $count_duplicate_u_name = mysqli_num_rows($duplicate_u_name);
+
+        if ($count_duplicate_u_name > 0) {
+            $usernameErr = " already exists";
             $send = 0;
-        }    
-
-        $errObject = array("oldname"=>"$oldusernameErr","name"=>"$usernameErr","action"=>"");
-
-        if($send==1){
-           
-            $query = "UPDATE users SET username='$username' WHERE user_id='$id' AND facility_id = '$center';";
-            $result = mysqli_query($conn,$query) or die(mysqli_error($conn)); 
-            
-            if($result){	
-                if(mysqli_affected_rows($conn)>0){
-                        
-                        $errObject["action"]="1";
-                        $errObject=json_encode($errObject);
-                        echo $errObject;
-                       
-                    }else{
-                        
-                        $errObject["action"]="2";
-                        $errObject=json_encode($errObject );
-                        echo $errObject;
-                       
-                    }
-                    
-                }else{
-                    $errObject["action"]="2";
-                    $errObject=json_encode($errObject);
-                    echo $errObject;
-                } 
-                
-        }elseif($send==0){
-            $errObject["action"]="0";	
-            $errObject=json_encode($errObject);
-            echo $errObject;
-          
         }
+
+        $errObject = array("oldname" => "$oldusernameErr", "name" => "$usernameErr", "action" => "");
+
+        if ($send == 1) {
+            // Update the username with lowercase $nameusername (new username)
+            $query = "UPDATE users SET username='$nameusername' WHERE user_id='$id' AND facility_id = '$center';";
+            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+            if ($result) {
+                if (mysqli_affected_rows($conn) > 0) {
+                    $errObject["action"] = "1";
+                } else {
+                    $errObject["action"] = "2";
+                }
+            } else {
+                $errObject["action"] = "2";
+            }
+        } elseif ($send == 0) {
+            $errObject["action"] = "0";
+        }
+
+        $errObject = json_encode($errObject);
+        echo $errObject;
+
 
     }elseif($_POST['action']=='2'){
         $id = mysqli_real_escape_string($conn,test_input($_POST['id']));

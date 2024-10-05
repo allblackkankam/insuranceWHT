@@ -187,12 +187,12 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
                 echo '<tr>
                         <td ><b>'.$new_date.'</b></td>
                         <td ><b>Total claims processed for '.$monthIn." ".$year.'</b></td>
-                        <td ><b>'.$total.'</b></td>
-                        <td ><b>'.$totaladj.'</b></td>
-                        <td ><b>'.$WHTtotal.'</b></td>
+                        <td ><b>'.number_format($total,2).'</b></td>
+                        <td ><b>'.number_format($totaladj,2).'</b></td>
+                        <td ><b>'.number_format($WHTtotal,2).'</b></td>
                         <td ><b>0</b></td>
                         <td ><b>0</b></td>
-                        <td ><b>'.$amountReceivable.'</b></td>
+                        <td ><b>'.number_format($amountReceivable,2).'</b></td>
                     </tr>';
             }
             // If type is 1, aggregate data for rows with the same entry_id
@@ -236,9 +236,9 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
                 <td >0</td>
                 <td >0</td>
                 <td >0</td>
-                <td >'.$combined['tax_paid'].'</td>
-                <td >'.$combined['combined_paid'].'</td>
-                <td >'.$balanceForType1.'</td>
+                <td >'.number_format($combined['tax_paid'],2).'</td>
+                <td >'.number_format($combined['combined_paid'],2).'</td>
+                <td >'.number_format($balanceForType1,2).'</td>
             </tr>
             <tr>
                 <td >'.$new_date.'</td>
@@ -248,7 +248,7 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
                 <td ></td>
                 <td >0</td>
                 <td >0</td>
-                <td >'.$totalOutstanding.'</td>
+                <td >'.number_format($totalOutstanding,2).'</td>
             </tr>';
         }
     }

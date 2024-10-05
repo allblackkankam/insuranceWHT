@@ -6,6 +6,7 @@
   <?php 
     require("templates/head.php");
     require("models/auth.php"); 
+    checkUserRole(array("1","2"));
 
    ?>
  
@@ -177,6 +178,7 @@
                 $(".passremoved").show();
                 $("#type").val('new');
                 $("#form_user").trigger("reset");
+                $(".modal-title").html("Create User")
 
             
 
@@ -220,10 +222,14 @@
                         if(array["action"]=="1")
                         {
                             
-                            $("#msg").fadeIn().fadeOut(10000).html('<div class="alert alert-success alert-dismissible mb-2" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><span>Added Successfully</span></div>');
+                            toastr.success(
+                            "Created Successfully.",
+                            "Great!",
+                            { positionClass: "toast-bottom-left", containerId: "toast-bottom-left",progressBar: !0,closeButton: !0, }
+                            );
 
                             $("#form_user").trigger("reset");
-                            //$("#createmodal").modal("hide");
+                            $("#createmodal").modal("hide");
                             
                             loadData();
 
@@ -238,8 +244,9 @@
                             
                             
                             $("#create_user").html("Save").prop("disabled",false);
-                        }else 
-                        if(array["action"]=="CSRF")
+                        }else if(array["action"]=="2"){
+                            $("#create_user").html("No Change").prop("disabled",false);
+                        }else if(array["action"]=="CSRF")
                         {
                             
                             window.location.href="/errorfiles/400";
@@ -330,6 +337,7 @@
                 
                 $("#createmodal").modal("show");
                 $(".passremoved").hide()
+                $(".modal-title").html("Update User")
 
                 var firstname=$(this).parents("tr").attr("data-fname")
                 var lastname=$(this).parents("tr").attr("data-lname")
