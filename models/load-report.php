@@ -69,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     // Initialize an array to store rows grouped by insurance_code and entry_id
 $groupedEntries = [];
+$yearlyTotals = []; // Initialize yearly totals array
 
 // Fetch all rows and group them by insurance_code and entry_id
 if ($select_query->num_rows > 0) {
@@ -86,6 +87,49 @@ if ($select_query->num_rows > 0) {
 
         // Add row to the respective insurance_code and entry_id group
         $groupedEntries[$insurance_code][$entry_id][] = $row;
+
+        // Initialize yearly totals for this insurance if not already set
+        if (!isset($yearlyTotals[$insurance_code])) {
+            $yearlyTotals[$insurance_code] = [
+                'claimed' => 0,
+                'rejected' => 0,
+                'wht_tax' => 0,
+                'wht_tax_paid' => 0,
+                'payments' => 0,
+                'balance' => 0,
+            ];
+        }
+
+        // Update yearly totals
+        $serviceAmount = $row["amount_services"];
+        $drugAmount = $row["amount_drugs"];
+        $serviceAdj = $row["adjustment_services"];
+        $drugAdj = $row["adjustment_drugs"];
+        $servicesPaid = $row["services_paid"];
+        $drugsPaid = $row["drugs_paid"];
+        $taxPaid = $row["tax_paid"];
+
+        $total = $serviceAmount + $drugAmount;
+        $totaladj = $serviceAdj + $drugAdj;
+        $chargeable = $total - $totaladj;
+        $WHTtotal = ((7.5 / 100) * ($serviceAmount - $serviceAdj)) + ((3 / 100) * ($drugAmount - $drugAdj));
+        $amountReceivable = $chargeable - $WHTtotal;
+
+        // Update totals for this row
+        $yearlyTotals[$insurance_code]['claimed'] += $total;
+        $yearlyTotals[$insurance_code]['rejected'] += $totaladj;
+        $yearlyTotals[$insurance_code]['wht_tax'] += $WHTtotal;
+        $yearlyTotals[$insurance_code]['wht_tax_paid'] += $taxPaid;
+        $yearlyTotals[$insurance_code]['payments'] += $servicesPaid + $drugsPaid;
+        
+         // Calculate $totalOutstanding for this entry_id
+         $combinedPaid = $servicesPaid + $drugsPaid;
+         $balanceForType1 = $amountReceivable - $combinedPaid;
+         $totalOutstanding = $balanceForType1 + ($WHTtotal - $taxPaid);
+ 
+         // Add $totalOutstanding to the balance in yearly totals
+         $yearlyTotals[$insurance_code]['balance'] += $totalOutstanding;
+    
     }
 
     echo '<section id="table-customer-statistics">
@@ -251,9 +295,21 @@ foreach ($groupedEntries as $insurance_code => $entriesByEntryId) {
                 <td >'.number_format($totalOutstanding,2).'</td>
             </tr>';
         }
+          
     }
+    // Display yearly totals for this insurance
+    echo '<tr class="text-bold">
+    <td class="text-uppercase" colspan="2"><b>Total for ' . $name[$insurance_code] . ' for the year</b></h5>
+    <td><b>' . number_format($yearlyTotals[$insurance_code]['claimed'], 2) . '</b></td>
+    <td><b> ' . number_format($yearlyTotals[$insurance_code]['rejected'], 2) . '</b></td>
+    <td><b>' . number_format($yearlyTotals[$insurance_code]['wht_tax'], 2) . '</b></td>
+    <td><b> ' . number_format($yearlyTotals[$insurance_code]['wht_tax_paid'], 2) .'</b></td>
+    <td><b>' . number_format($yearlyTotals[$insurance_code]['payments'], 2) . '</b></td>
+    <td><b>' . number_format($yearlyTotals[$insurance_code]['balance'], 2) . '</b></td>
+</tr>';
 
     echo '</table>';
+
 }
     echo'        </div>
                 </div>
