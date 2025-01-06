@@ -115,7 +115,7 @@
                                   $disabled = 'disabled';
                               }
                               $selected = ($currentMonth == $monthNumber) ? 'selected' : '';
-                              echo "<option value='$monthNumber' $selected $disabled>$monthName</option>";
+                              echo "<option value='$monthNumber' $selected>$monthName</option>";
                           }
                             ?>
                           </select>
@@ -588,6 +588,38 @@
             window.open("printreport?in="+insurance+"&mo="+month+"&yr="+year,"Print Report");
            
           })
+
+          const currentYear = new Date().getFullYear();
+            const currentMonth = new Date().getMonth() + 1; // Months are 0-indexed, so +1
+
+            // Function to update month options based on the selected year
+            function updateMonthOptions() {
+                const selectedYear = parseInt($('#year').val());
+
+                // Reset the month to January every time the year changes
+                $('#month').val('1');
+
+                if (selectedYear === currentYear) {
+                    // If selected year is the current year, disable future months
+                    $('#month option').each(function() {
+                        const month = parseInt($(this).val());
+                        if (month <= currentMonth) {
+                            $(this).prop('disabled', false); // Enable months up to current month
+                        } else {
+                            $(this).prop('disabled', true); // Disable future months
+                        }
+                    });
+                } else {
+                    // If selected year is a past year, enable all months
+                    $('#month option').prop('disabled', false);
+                }
+            }
+
+            // Initialize the month options based on the default selected year
+            updateMonthOptions();
+
+            // Event listener to update month options when the year is changed
+            $('#year').change(updateMonthOptions);
             
         })	
     </script>
